@@ -11,3 +11,4 @@ without no-ff
 just for fun
 sorry for that  
 now no-ff
+fix bugs
