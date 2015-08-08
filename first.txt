@@ -5,4 +5,4 @@ git tracks changes
 oh I forgot something 
 then try
 I am in dev
-create a new branch is quick & simple
+reate a new branch is quick AND simple
