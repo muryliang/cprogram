@@ -7,3 +7,4 @@ then try
 I am in dev
 reate a new branch is quick AND simple
 no fast-forward merge
+without no-ff
