@@ -27,7 +27,7 @@ int Monster_attack( void *self , int damage){
 
 
 int Monster_init(void *self){
-	Monster *monser = self;
+	Monster *monster = self;
 	monster->hit_points = 10;
 	return 1;
 }
@@ -63,6 +63,20 @@ void *Room_move( void *self , Direction direction){
 	}
 
 	return next;
+}
+
+int Room_attack(void *self , int damage){
+	Room *room = self;
+	Monster *monster = room->bad_guy;
+
+	if( monster ){
+		monster->_(attack)(monster , damage);
+		return 1;
+	}
+	else{
+		printf("you fail in the air at nothing. idiot\n");
+		return 0;
+	}
 }
 
 Object RoomProto = {
@@ -102,7 +116,7 @@ int Map_init(void *self){
 	
 	/*put the bad guy in the arena*/
 
-	arena->bad_gry = NEW( Monster , "the evil minotaur");
+	arena->bad_guy = NEW( Monster , "the evil minotaur");
 	
 	/* setup the map room*/
 	hall->north = throne;
@@ -123,9 +137,9 @@ int Map_init(void *self){
 
 
 Object MapProto = {
-	.init = Map_init;
-	.move = Map_move;
-	.attack = Map_attack;
+	.init = Map_init,
+	.move = Map_move,
+	.attack = Map_attack
 };
 
 int process_input( Map *game){
@@ -137,7 +151,7 @@ int process_input( Map *game){
 	int damage = rand()%4;
 
 	switch( ch ){
-		case -1;
+		case -1:
 			printf("giving up? you suck\n");
 			return 0;	
 			break;
@@ -162,3 +176,27 @@ int process_input( Map *game){
 			if( game->location->south) printf("SOUTH\n");
 			if( game->location->east) printf("EAST\n");
 			if( game->location->west) printf("WEST\n");
+			break;
+		default:
+			printf("what?: %d\n" , ch);
+	}
+	
+	return 1;
+}
+
+
+int main(int ac ,char *av[]){
+
+	/*simple way to setup the randomness*/
+	srand(time(NULL ));
+		
+	/*make our map to work with*/
+	Map *game  = NEW(Map , "the hall of the minotaur.");
+	
+	printf("you enter the ");
+	game->location->_(describe)(game->location);
+	
+	while( process_input( game )){
+	}
+	return 0;
+}

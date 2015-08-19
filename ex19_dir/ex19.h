@@ -18,7 +18,7 @@ struct Room{
 	Monster *bad_guy;
 
 	struct Room *north;
-	struct Room *souch;
+	struct Room *south;
 	struct Room *east;
 	struct Room *west;
 };
