@@ -12,12 +12,20 @@ int normal_copy( char *from , char *to , int count){
 	return i;
 }
 
-int duffs_device( char *from , char *to , int count){
+#define LOOP(N)  case N:*to++=*from++;\
+		case N-1 : *to++ = *from++;\
+		case N-2 : *to++ = *from++;\
+		case N-3: *to++ = *from++;\
+		case N-4: *to++ = *from++;\
+		case N-5: *to++ = *from++;\
+		case N-6: *to++ = *from++
 
-	{
+int duffs_device( char *from , char *to , int count)
+
+{
 		int n = (count + 7 ) / 8 ;
 
-		switch( count % 8 ){
+/*		switch( count % 8 ){
 			case 0 :do{ *to++ = *from++;
 				case 7: *to++ = *from++;
 				case 6: *to++ = *from++;
@@ -28,7 +36,12 @@ int duffs_device( char *from , char *to , int count){
 				case 1: *to++ = *from++;
 			} while( --n > 0);
 		}
-	}
+*/
+		switch( count % 8 ){
+			case 0: do{ *to++ = *from++;
+				LOOP(7);
+			} while( --n > 0);
+		}
 	return count;
 }
 
@@ -78,4 +91,28 @@ int main(int ac ,char *av[]){
 	check(valid_copy(to , 1000 , 'y') , "not initialized right");
 	 
 	/*use normal copy to*/
+	rc = normal_copy(from , to , 1000);
+	check(rc == 1000 , "normal copy failed: %d" , rc);
+	check(valid_copy(to , 1000 , 'x'),"normal copy failed");
+	
+	/*reset*/
+	memset(to , 'y' , 1000);
+	
+	/*duffs version*/
+	rc = duffs_device(from , to , 1000);
+	check( rc == 1000 , "duff's device failed: %d" , rc);
+	check( valid_copy(to ,1000 , 'x') , "duff's device failed copy");
+	
+	/*reset*/
+	memset(to , 'y' ,1000);
+
+	/*my version*/
+	rc = zeds_device(from , to , 1000);
+	check(rc == 1000 , "zed's device failed: %d" , rc);
+	check(valid_copy(to , 1000 , 'x'), "zed's device failed copy");
+	
+	return 0;
+error:
+	return 1;
+}
 			
