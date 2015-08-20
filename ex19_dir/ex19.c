@@ -2,13 +2,14 @@
 #include<errno.h>
 #include<stdlib.h>
 #include<string.h>
+#include<assert.h>
 #include<time.h>
 #include"ex19.h"
 
 int Monster_attack( void *self , int damage){
 
 	Monster *monster = self;
-	assert( damage > 0 && damage < 4 );
+	assert(  damage < 4 );
 
 	printf("you attack %s!\n" , monster->_(description));
 	
