@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CC	Makefile	/^CC= gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS= -Wall -g -std=gnu99 -DNDEBUG$/;"	m
+__dbg_h__	dbg.h	2;"	d
+check	dbg.h	23;"	d
+check_debug	dbg.h	28;"	d
+check_mem	dbg.h	27;"	d
+clean_errno	dbg.h	15;"	d
+debug	dbg.h	11;"	d
+debug	dbg.h	9;"	d
+log_err	dbg.h	17;"	d
+log_info	dbg.h	21;"	d
+log_warn	dbg.h	19;"	d
+main	ex20.c	/^int main(int ac ,char *av[]){$/;"	f
+sentinel	dbg.h	25;"	d
+test_check	ex20.c	/^int test_check( char *file_name){$/;"	f
+test_check_debug	ex20.c	/^int test_check_debug(){$/;"	f
+test_check_mem	ex20.c	/^int test_check_mem(){$/;"	f
+test_debug	ex20.c	/^void test_debug(){$/;"	f
+test_log_err	ex20.c	/^void test_log_err(){$/;"	f
+test_log_info	ex20.c	/^void test_log_info(){$/;"	f
+test_log_warn	ex20.c	/^void test_log_warn(){$/;"	f
+test_sentinel	ex20.c	/^int test_sentinel( int code){$/;"	f
