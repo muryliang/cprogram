@@ -18,19 +18,19 @@ cd /tmp
 
 #extract it and go into the source
 #tar -zxv -f apr-1.5.2.tar.gz
-#cd apr-1.5.2
+cd apr-1.5.2
 
 #configure, make , make install
-#./configure
-#make
-#sudo make install
+./configure
+make
+sudo make install
 
 #reset and cleanup
 cd /tmp
-#rm -rf apr-1.5.2 apr-1.5.2.tar.gz
+rm -rf apr-1.5.2 apr-1.5.2.tar.gz
 
 #do the same with apr-util
-#curl -L -O http://archive.apache.org/dist/apr/apr-util-1.5.4.tar.gz
+curl -L -O http://archive.apache.org/dist/apr/apr-util-1.5.4.tar.gz
 
 #signify it
 curl -L -O http://archive.apache.org/dist/apr/apr-util-1.5.4.tar.gz.asc
