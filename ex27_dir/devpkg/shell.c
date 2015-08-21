@@ -26,10 +26,12 @@ int Shell_exec(Shell template , ... ){
 		for(i = 0 ; template.args[i] != NULL ; i++){
 			if(strcmp(template.args[i] , key) == 0){
 				template.args[i] = arg;
+				template.ac -= 1;/* found a arg to replace*/
 				break; /*found it*/
 			}
 		}
 	}
+	check( template.ac == 0 , "failed to replace all args.");
 
 	rc = Shell_run(p , &template);
 	apr_pool_destroy(p);
@@ -79,6 +81,7 @@ error:
 Shell CLEANUP_SH = {
 	.exe = "rm",
 	.dir = "/tmp",
+	.ac =3, 
 	.args = { "rm" ,"-rf","/tmp/pkg-buid","tmp/pkg-src.tar.gz",
 		"/tmp/pkg-src.tar.bz2","/tmp/DEPENDS",NULL}
 };
@@ -86,35 +89,41 @@ Shell CLEANUP_SH = {
 Shell GIT_SH = {
 	.dir = "/tmp",
 	.exe = "git",
+	.ac = 2,
 	.args ={"git" , "clone" , "URL" , "pkg-build" , NULL}
 };
 
 Shell TAR_SH = {
 	.dir = "/tmp/pkg-build",
 	.exe = "tar",
+	.ac = 2,
 	.args = {"tar" , "-xzf" ,"FILE" , "--strp-components" , "1" ,NULL }
 };
 
 Shell CURL_SH = {
 	.dir = "/tmp",
 	.exe = "curl",
+	.ac = 2,
 	.args = {"curl" , "-L" , "-o" , "TARGET", "URL" , NULL}
 }
 
 Shell CONFIGURE_SH = {
 	.exe = "make",
 	.dir = "/tmp/pkg-build",
+	.ac = 1,
 	.args = {"make" , "OPTS" , NULL}
 };
 
 Shell MAKE_SH = {
 	.exe = "make",
 	.dir = "/tmp/pkg-build",
+	.ac = 1;
 	.args = {"make" ,"OPTS" , NULL}
 };
 
 Shell INSTALL_SH = {
 	.exe = "sudo",
 	.dir = "/tmp/pkg-build",
+	.ac = 1,
 	.args = {"sudo" , "make" , "TARGET" , NULL}
 };
