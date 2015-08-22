@@ -108,10 +108,10 @@ Shell CURL_SH = {
 }
 
 Shell CONFIGURE_SH = {
-	.exe = "make",
+	.exe = "configure",
 	.dir = "/tmp/pkg-build",
 	.ac = 1,
-	.args = {"make" , "OPTS" , NULL}
+	.args = {"configure" , "OPTS" , NULL}
 };
 
 Shell MAKE_SH = {
