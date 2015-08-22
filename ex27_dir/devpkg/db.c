@@ -35,7 +35,7 @@ error:
 	return NULL;
 }
 
-int DB_updata(char *url){
+int DB_update(const char *url){
 
 	if(DB_find( url )){
 		log_info("already recorded as installed: %s" , url);
@@ -56,7 +56,7 @@ error:
 	return -1;
 }
 
-int DB_find( char *url){
+int DB_find( const char *url){
 
 	bstring data = NULL;
 	bstring line = bfromcstr(url);

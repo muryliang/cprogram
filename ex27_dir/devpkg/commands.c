@@ -15,7 +15,7 @@ int Command_depends(apr_pool_t *p , const char* path){
  * to install
  */
 	FILE *in = NULL;
-	bstirng line = NULL;
+	bstring line = NULL;
 
 	in = fopen(path , "r");
 	check(in != NULL , "faled to open download depends: %s" , path);
@@ -30,7 +30,7 @@ int Command_depends(apr_pool_t *p , const char* path){
 	bdestroy(line);
 	}
 
-	fclose(line);
+	fclose(in);
 	return 0;
 
 error:
@@ -65,7 +65,7 @@ int Command_fetch(apr_pool_t *p , const char *url ,int fetch_only){
 		check(!fetch_only , "no point in fetching a DEPENDS file.");
 		
 		if(info.scheme){
-			depends_file =DEPEND_PATH;
+			depends_file =DEPENDS_PATH;
 			rc = Shell_exec(CURL_SH,"URL" , url , "TARGET",
 				depends_file,NULL);
 			check(rc == 0 , "curl failed");
@@ -76,7 +76,7 @@ int Command_fetch(apr_pool_t *p , const char *url ,int fetch_only){
 
 		/*recursively process the devpkg list*/
 		log_info("building accroding to DEPENDS:%s" ,url);
-		rv = Command_depends(p , depend_file);
+		rv = Command_depends(p , depends_file);
 		check(rv == 0 , "failed to process the DEPENDS:%s" ,url);
 
 		/*indicats that nothing needs to be done*/
@@ -87,7 +87,7 @@ int Command_fetch(apr_pool_t *p , const char *url ,int fetch_only){
 		if(info.scheme){
 			rc = Shell_exec(CURL_SH,
 				"URL",url,
-				"TARGET",TAR_GZ_SRC,NULL};
+				"TARGET",TAR_GZ_SRC,NULL);
 		check(rc == 0 , "failed to curl source: %s" ,url);
 	}
 
@@ -99,7 +99,7 @@ int Command_fetch(apr_pool_t *p , const char *url ,int fetch_only){
 	}
 
 	else if( apr_fnmatch(TAR_BZ2_PAT ,info.path ,0) == APR_SUCCESS){
-		if(info.cheme){
+		if(info.scheme){
 			rc = Shell_exec(CURL_SH , "URL",url , "TARGET",TAR_BZ2_SRC,NULL);
 			check(rc == 0 , "curl failed.");
 		}
@@ -108,7 +108,7 @@ int Command_fetch(apr_pool_t *p , const char *url ,int fetch_only){
 			APR_UREAD | APR_UWRITE | APR_UEXECUTE , p );
 
 		check(rc == 0 , "failed to make directory %s" ,BUILD_DIR);
-		rc = Shell_exec(TAR_SH ,"FILE" , TAR_BZ3_SRC ,NULL);
+		rc = Shell_exec(TAR_SH ,"FILE" , TAR_BZ2_SRC ,NULL);
 		check(rc == 0 ,"failed to untar %s" , TAR_BZ2_SRC);
 	}
 	
@@ -135,7 +135,7 @@ int Command_build(apr_pool_t *p , const char *url , const char *configure_opts ,
 		"Build directory doesn't exist:%s",BUILD_DIR);
 
 	/*actually do an install*/
-	if(access(CONFIG_SCRIPT), X_OK) == 0{
+	if(access(CONFIG_SCRIPT, X_OK) == 0){
 		log_info("has a configure script, running it.");
 		rc = Shell_exec(CONFIGURE_SH , "OPTS" , configure_opts , NULL);
 		check(rc == 0 , "failed to configure");
@@ -145,7 +145,7 @@ int Command_build(apr_pool_t *p , const char *url , const char *configure_opts ,
 	check(rc == 0 , "failed to build");
 	
 	rc = Shell_exec(INSTALL_SH,
-		"TARGET" ,install_opts ? isntall_opts :"install");
+		"TARGET" ,install_opts ? install_opts :"install");
 	
 	rc = Shell_exec(CLEANUP_SH , NULL);
 	check(rc == 0 , "failed to cleanup after build.");
@@ -159,11 +159,11 @@ error:
 }
 
 
-int Command_install( apr_pool_t *p , const char *url , const char *configure_opts,const char *make_opts , const char *isntall_opts){
+int Command_install( apr_pool_t *p , const char *url , const char *configure_opts,const char *make_opts , const char *install_opts){
 
 /* the most abstract upper function : command_install:
  * 	first clean up the dir 
- * 	then find the url given
+ * 	then find the url given if find then return (installed)
  * 	then fetch(do the needed download and install for depends: return 0;
  * 		   or curl proper files to be installed :return 1)
  * 	according to the return value of fetch  do the real install with 
@@ -184,7 +184,7 @@ int Command_install( apr_pool_t *p , const char *url , const char *configure_opt
 	rc = Command_fetch(p , url , 0);
 
 	if(rc == 1 ){
-		rc == Command_build(p , url ,configure_opts , make_opts ,install_opts);
+		rc = Command_build(p , url ,configure_opts , make_opts ,install_opts);
 		check(rc==0,"failed to build %s" , url);
 	}
 	else if(rc == 0){

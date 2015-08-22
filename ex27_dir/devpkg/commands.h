@@ -1,7 +1,7 @@
 #ifndef _commands_h
 #define _commands_h
 
-#include<apr_pools_h>
+#include<apr_pools.h>
 
 #define DEPENDS_PATH "/tmp/DEPENDS"
 #define TAR_GZ_SRC "/tmp/pkg-src.tar.gz"

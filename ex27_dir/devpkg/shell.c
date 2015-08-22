@@ -12,7 +12,7 @@ int Shell_exec(Shell template , ... ){
 	const char *arg = NULL;
 	int i = 0;
 
-	rv = arp_pool_create(&p , NULL );
+	rv = apr_pool_create(&p , NULL );
 	check(rv == APR_SUCCESS, "failed to create pool.");
 
 	va_start(argp , template);
@@ -54,7 +54,7 @@ int Shell_run(apr_pool_t *p , Shell *cmd){
 	
 	rv = apr_procattr_io_set(attr, APR_NO_PIPE ,APR_NO_PIPE,
 		APR_NO_PIPE);
-	check(rv == ARP_SUCCESS , "failed te set io of command . ");
+	check(rv == APR_SUCCESS , "failed te set io of command . ");
 	
 	rv = apr_procattr_dir_set(attr ,cmd->dir);
 	check(rv == APR_SUCCESS , "failed to set root to %s" , cmd->dir);
@@ -105,7 +105,7 @@ Shell CURL_SH = {
 	.exe = "curl",
 	.ac = 2,
 	.args = {"curl" , "-L" , "-o" , "TARGET", "URL" , NULL}
-}
+};
 
 Shell CONFIGURE_SH = {
 	.exe = "configure",
@@ -117,7 +117,7 @@ Shell CONFIGURE_SH = {
 Shell MAKE_SH = {
 	.exe = "make",
 	.dir = "/tmp/pkg-build",
-	.ac = 1;
+	.ac = 1,
 	.args = {"make" ,"OPTS" , NULL}
 };
 
