@@ -91,4 +91,27 @@ Shell TAR_SH{
 	.args = {"tar" , "-zxf" , "FILE" , "--strip-components" , "1" , NULL}
 };
 
+Shell CURL_SH{
+	.exe = "curl",
+	.dir = "/tmp",
+	.args = {"curl" , "-L" , "-o" ,"TARGET", "URL" , "NULL"}
+};
+
+Shell CONFIGUIRE_SH{
+	.exe = "configure",
+	.dir = "/tmp/pkg-build",
+	.args = {"configure" , "OPT", NULL}
+};
+
+Shell MAKE_SH{
+	.exe = "make",
+	.dir = "/tmp/pkg-build",
+	.args = {"make" , "OPT", NULL}
+};
+
+Shell INSTALL_SH{
+	.exe = "sudo",
+	.dir = "/tmp/pkg-build",
+	.args = "sudo" , "make" , "TARGET" ,NULL}
+};
 	
