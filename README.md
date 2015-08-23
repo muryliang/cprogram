@@ -9,5 +9,6 @@ learn code the hard way  in C
 2015.8.21  ex26,ex27
 2015.8.22  ex27 complete
 test
+2015.8.23 ex27 my own doing
 
 

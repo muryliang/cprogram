@@ -82,7 +82,7 @@ Shell CLEANUP_SH = {
 	.exe = "rm",
 	.dir = "/tmp",
 	.ac =3, 
-	.args = { "rm" ,"-rf","/tmp/pkg-buid","tmp/pkg-src.tar.gz",
+	.args = { "rm" ,"-rf","/tmp/pkg-buid","/tmp/pkg-src.tar.gz",
 		"/tmp/pkg-src.tar.bz2","/tmp/DEPENDS",NULL}
 };
 
@@ -97,7 +97,7 @@ Shell TAR_SH = {
 	.dir = "/tmp/pkg-build",
 	.exe = "tar",
 	.ac = 2,
-	.args = {"tar" , "-xzf" ,"FILE" , "--strp-components" , "1" ,NULL }
+	.args = {"tar" , "-xzf" ,"FILE" , "--strip-components" , "1" ,NULL }
 };
 
 Shell CURL_SH = {
