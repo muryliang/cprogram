@@ -1,4 +1,4 @@
-CFLAGS = -g -O2 -Wall -Wextra -Isrc -rdynamic -DNDEBUG $(OPTFALGS)
+CFLAGS = -g -O2 -Wall -Wextra -Isrc -DNDEBUG -rdynamic  $(OPTFALGS)
 LIBS = -ldl $(OPTLIBS)
 PREFIX ?= /usr/local
 
@@ -9,10 +9,10 @@ TEST_SRC = $(wildcard tests/*_tests.c)
 TESTS = $(patsubst %.c,%,$(TEST_SRC))
 
 TARGET = build/libYOUR_LIBRARY.a
-SO_TARGET = $(patsubst %.a, %.so , $(TARGET))
+#SO_TARGET = $(patsubst %.a, %.so , $(TARGET))
 
 #The Target Build
-all: $(TARGET) $(SO_TARGET) tests
+all: $(TARGET) tests
 
 dev: CFLAGS=-g -Wall -Isrc -Wall -Wextra $(OPTFLAGS)
 dev : all
@@ -22,8 +22,6 @@ $(TARGET): build $(OBJECTS)
 	ar rcs $@ $(OBJECTS)
 	ranlib $@ 
 
-$(SO_TARGET) : $(TARGET) $(OBJECTS)
-	$(CC) -shared -o $@ $(OBJECTS)
 
 build:
 	@mkdir -p build	
