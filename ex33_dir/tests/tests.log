@@ -1,0 +1,3 @@
+DEBUG tests/list_algo_tests.c:116 ------RUNNING: ./tests/list_algo_tests
+DEBUG tests/list_algo_tests.c:110 
+------ test_bubble_sort
