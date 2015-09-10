@@ -1,0 +1,4 @@
+DEBUG tests/check_tests.c:54 ------RUNNING: ./tests/check_tests
+DEBUG tests/check_tests.c:46 
+------ test_dlopen
+(ERROR) tests/check_tests.c:21:errno: NONE) failed to open the library to test
