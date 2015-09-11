@@ -5,11 +5,11 @@
 #include<lcthw/dbg.h>
 
 typedef struct DArray {
-	int end;
-	int max;
-	size_t element_size;
-	size_t expand_rate;
-	void **contents;
+	int end; // the first emtpy index
+	int max; // max times
+	size_t element_size; // sizeof(itmes)
+	size_t expand_rate; // default expand nums
+	void **contents; // the array of pointers to items of various types 
 } DArray;
 
 DArray *DArray_create(size_t element_size , size_t initial_max);

@@ -34,41 +34,42 @@ OBJECTS	Makefile	/^OBJECTS = $(patsubst %.c,%.o,$(SOURCES))$/;"	m
 PREFIX	Makefile	/^PREFIX ?=\/usr\/local$/;"	m
 RUN_TESTS	tests/minunit.h	15;"	d
 SOURCES	Makefile	/^SOURCES = $(wildcard src\/**\/*.c src\/*.c)$/;"	m
-SO_TARGET	Makefile	/^SO_TARGET=$(patsubst %.a,%,%.so,$(TARGET))$/;"	m
+SO_TARGET	Makefile	/^SO_TARGET=$(patsubst %.a,%.so,$(TARGET))$/;"	m
 TARGET	Makefile	/^TARGET=build\/libYOUR_LIBARY.a$/;"	m
 TESTS	Makefile	/^TESTS = $(patsubst %.c,%,$(TEST_SRC))$/;"	m
 TEST_SRC	Makefile	/^TEST_SRC=$(wildcard tests\/*_tests.c)$/;"	m
 _DArray_h	src/lcthw/darray.h	2;"	d
 __dbg_h__	src/lcthw/dbg.h	2;"	d
 _minunit_h	tests/minunit.h	3;"	d
-all_tests	tests/darrya_tests.c	/^char *all_tests(){$/;"	f
-array	tests/darrya_tests.c	/^static DArray *array = NULL;$/;"	v	file:
+all_tests	tests/darray_tests.c	/^RUN_TESTS(all_tests);$/;"	v
+all_tests	tests/darray_tests.c	/^char *all_tests(){$/;"	f
+array	tests/darray_tests.c	/^static DArray *array = NULL;$/;"	v	file:
 check	src/lcthw/dbg.h	41;"	d
 check_debug	src/lcthw/dbg.h	46;"	d
 check_mem	src/lcthw/dbg.h	45;"	d
 clean_errno	src/lcthw/dbg.h	33;"	d
-contents	src/lcthw/darray.h	/^	void **contents;$/;"	m	struct:DArray
+contents	src/lcthw/darray.h	/^	void **contents; \/\/ the array of pointers to items of various types $/;"	m	struct:DArray
 debug	src/lcthw/dbg.h	27;"	d
 debug	src/lcthw/dbg.h	29;"	d
-element_size	src/lcthw/darray.h	/^	size_t element_size;$/;"	m	struct:DArray
-end	src/lcthw/darray.h	/^	int end;$/;"	m	struct:DArray
-expand_rate	src/lcthw/darray.h	/^	size_t expand_rate;$/;"	m	struct:DArray
+element_size	src/lcthw/darray.h	/^	size_t element_size; \/\/ sizeof(itmes)$/;"	m	struct:DArray
+end	src/lcthw/darray.h	/^	int end; \/\/ the first emtpy index$/;"	m	struct:DArray
+expand_rate	src/lcthw/darray.h	/^	size_t expand_rate; \/\/ default expand nums$/;"	m	struct:DArray
 log_err	src/lcthw/dbg.h	35;"	d
 log_info	src/lcthw/dbg.h	39;"	d
 log_warn	src/lcthw/dbg.h	37;"	d
-max	src/lcthw/darray.h	/^	int max;$/;"	m	struct:DArray
+max	src/lcthw/darray.h	/^	int max; \/\/ max times$/;"	m	struct:DArray
 mu_assert	tests/minunit.h	11;"	d
 mu_run_test	tests/minunit.h	12;"	d
 mu_suite_start	tests/minunit.h	9;"	d
 sentinel	src/lcthw/dbg.h	43;"	d
-test_create	tests/darrya_tests.c	/^char *test_create()$/;"	f
-test_destory	tests/darrya_tests.c	/^char *test_destory()$/;"	f
-test_expand_contact	tests/darrya_tests.c	/^char *test_expand_contact()$/;"	f
-test_get	tests/darrya_tests.c	/^char *test_get()$/;"	f
-test_new	tests/darrya_tests.c	/^char *test_new()$/;"	f
-test_push_pop	tests/darrya_tests.c	/^char *test_push_pop()$/;"	f
-test_remove	tests/darrya_tests.c	/^char *test_remove()$/;"	f
-test_set	tests/darrya_tests.c	/^char *test_set()$/;"	f
+test_create	tests/darray_tests.c	/^char *test_create()$/;"	f
+test_destroy	tests/darray_tests.c	/^char *test_destroy()$/;"	f
+test_expand_contract	tests/darray_tests.c	/^char *test_expand_contract()$/;"	f
+test_get	tests/darray_tests.c	/^char *test_get()$/;"	f
+test_new	tests/darray_tests.c	/^char *test_new()$/;"	f
+test_push_pop	tests/darray_tests.c	/^char *test_push_pop()$/;"	f
+test_remove	tests/darray_tests.c	/^char *test_remove()$/;"	f
+test_set	tests/darray_tests.c	/^char *test_set()$/;"	f
 tests_run	tests/minunit.h	/^int tests_run;$/;"	v
-val1	tests/darrya_tests.c	/^static int *val1 = NULL;$/;"	v	file:
-val2	tests/darrya_tests.c	/^static int *val2 = NULL;$/;"	v	file:
+val1	tests/darray_tests.c	/^static int *val1 = NULL;$/;"	v	file:
+val2	tests/darray_tests.c	/^static int *val2 = NULL;$/;"	v	file:
