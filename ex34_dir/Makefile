@@ -9,7 +9,7 @@ TEST_SRC=$(wildcard tests/*_tests.c)
 TESTS = $(patsubst %.c,%,$(TEST_SRC))
 
 TARGET=build/libYOUR_LIBARY.a
-SO_TARGET=$(patsubst %.a,%,%.so,$(TARGET))
+SO_TARGET=$(patsubst %.a,%.so,$(TARGET))
 
 #The Target Build
 all: $(TARGET) $(SO_TARGET) tests

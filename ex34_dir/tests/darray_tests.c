@@ -18,7 +18,7 @@ char *test_create()
 	return NULL;
 }
 
-char *test_destory()
+char *test_destroy()
 {
 	DArray_destory(array);
 	return NULL;
@@ -68,7 +68,7 @@ char *test_remove()
 	return NULL;
 }
 
-char *test_expand_contact()
+char *test_expand_contract()
 {
 	int old_max = array->max;
 	DArray_expand(array);
@@ -86,8 +86,8 @@ char *test_expand_contact()
 char *test_push_pop()
 {
 	int i = 0;
-	for( i = 0 ; i< 1000 , i++){
-		int *val = DArryr_new(array);
+	for( i = 0 ; i< 1000 ; i++){
+		int *val = DArray_new(array);
 		*val = i*333;
 		DArray_push(array , val );
 	} 
@@ -119,6 +119,6 @@ char *all_tests(){
 
 	return NULL;
 }
-RUN_TESTS(all_tests());
+RUN_TESTS(all_tests);
 
 	

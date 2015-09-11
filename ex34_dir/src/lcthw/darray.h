@@ -2,7 +2,7 @@
 #define _DArray_h
 #include<stdlib.h>
 #include<assert.h>
-#include<lcthw/dbh.h>
+#include<lcthw/dbg.h>
 
 typedef struct DArray {
 	int end;
@@ -38,7 +38,7 @@ static inline void DArray_set(DArray *array , int i , void *el)
 {
 	check( i < array->max , "darray attemp to set past max");
 	if( i > array->end) array->end = i;
-	array->contensts[i] = el;
+	array->contents[i] = el;
 error:
 	return ;
 }
