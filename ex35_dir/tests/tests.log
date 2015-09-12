@@ -1,7 +1,3 @@
-DEBUG tests/darray_algos_tests.c:75 ------RUNNING: ./tests/darray_algos_tests
-DEBUG tests/darray_algos_tests.c:68 
------- test_qsort
-DEBUG tests/darray_algos_tests.c:39 ---Testing qsort sorting algorithm
 DEBUG tests/darray_tests.c:122 ------RUNNING: ./tests/darray_tests
 DEBUG tests/darray_tests.c:111 
 ------ test_create

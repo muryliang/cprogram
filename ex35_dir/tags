@@ -23,14 +23,15 @@ DArray_free	src/lcthw/darray.h	74;"	d
 DArray_get	src/lcthw/darray.h	/^static inline void *DArray_get(DArray  *array , int i)$/;"	f
 DArray_last	src/lcthw/darray.h	30;"	d
 DArray_max	src/lcthw/darray.h	33;"	d
+DArray_mergesort	src/lcthw/darray_algos.c	/^int DArray_mergesort( DArray *array , DArray_compare cmp)$/;"	f
 DArray_new	src/lcthw/darray.h	/^static inline void *DArray_new(DArray *array)$/;"	f
 DArray_pop	src/lcthw/darray.c	/^void *DArray_pop(DArray *array)$/;"	f
 DArray_push	src/lcthw/darray.c	/^int DArray_push(DArray *array , void *el)$/;"	f
+DArray_qsort	src/lcthw/darray_algos.c	/^int DArray_qsort(DArray *array , DArray_compare cmp)$/;"	f
 DArray_remove	src/lcthw/darray.h	/^static inline void *DArray_remove(DArray *array , int i)$/;"	f
 DArray_resize	src/lcthw/darray.c	/^static inline int DArray_resize(DArray *array , size_t newsize)$/;"	f	file:
 DArray_set	src/lcthw/darray.h	/^static inline void DArray_set(DArray *array , int i , void *el)$/;"	f
 DEFAULT_EXPAND_RATE	src/lcthw/darray.h	36;"	d
-Darray_qsort	src/lcthw/darray_algos.c	/^int Darray_qsort(DArray *array , DArray_compare cmp)$/;"	f
 LDLIBS	Makefile	/^LDLIBS  = -ldl $(OPTLIBS)$/;"	m
 NDEBUG	tests/minunit.h	1;"	d
 OBJECTS	Makefile	/^OBJECTS = $(patsubst %.c,%.o,$(SOURCES))$/;"	m
@@ -58,6 +59,7 @@ create_words	tests/darray_algos_tests.c	/^DArray *create_words()$/;"	f
 darray_algos_h	src/lcthw/darray_algos.h	2;"	d
 debug	src/lcthw/dbg.h	27;"	d
 debug	src/lcthw/dbg.h	29;"	d
+do_mergesort	src/lcthw/darray_algos.c	/^int do_mergesort( void **contents , int start , int end , int (*cmp)(const void* , const void *))$/;"	f
 element_size	src/lcthw/darray.h	/^	size_t element_size; \/\/ sizeof(itmes)$/;"	m	struct:DArray
 end	src/lcthw/darray.h	/^	int end; \/\/ the first emtpy index$/;"	m	struct:DArray
 expand_rate	src/lcthw/darray.h	/^	size_t expand_rate; \/\/ default expand nums$/;"	m	struct:DArray
@@ -66,6 +68,8 @@ log_err	src/lcthw/dbg.h	35;"	d
 log_info	src/lcthw/dbg.h	39;"	d
 log_warn	src/lcthw/dbg.h	37;"	d
 max	src/lcthw/darray.h	/^	int max; \/\/ max times$/;"	m	struct:DArray
+merged	src/lcthw/darray_algos.c	/^void merged( void **contents , int start , int mid , int end , int (*cmp)(const void * , const void *))$/;"	f
+mergesort	src/lcthw/darray_algos.c	/^int mergesort( void *base , int count , int num_size , int (*cmp)(const void* , const void *))$/;"	f
 mu_assert	tests/minunit.h	11;"	d
 mu_run_test	tests/minunit.h	12;"	d
 mu_suite_start	tests/minunit.h	9;"	d
@@ -75,6 +79,7 @@ test_create	tests/darray_tests.c	/^char *test_create()$/;"	f
 test_destroy	tests/darray_tests.c	/^char *test_destroy()$/;"	f
 test_expand_contract	tests/darray_tests.c	/^char *test_expand_contract()$/;"	f
 test_get	tests/darray_tests.c	/^char *test_get()$/;"	f
+test_mergesort	tests/darray_algos_tests.c	/^char *test_mergesort()$/;"	f
 test_new	tests/darray_tests.c	/^char *test_new()$/;"	f
 test_push_pop	tests/darray_tests.c	/^char *test_push_pop()$/;"	f
 test_qsort	tests/darray_algos_tests.c	/^char *test_qsort()$/;"	f

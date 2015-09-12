@@ -1,5 +1,6 @@
 #include"minunit.h"
 #include<lcthw/darray_algos.h>
+#include<string.h>
 
 int testcmp(char **a ,char **b)
 {
@@ -50,14 +51,15 @@ char *test_qsort()
 {
 	return run_sort_test(DArray_qsort  , "qsort");
 }
-
+/*
 char *test_heapsort()
 {
 	return run_sort_test(DArray_heapsort , "heapsort");
 }
-
+*/
 char *test_mergesort()
 {
+	printf("now in merge sort\n");
 	return run_sort_test(DArray_mergesort , "mergesort");
 }
 
@@ -66,7 +68,7 @@ char *all_tests(){
 	mu_suite_start();
 
 	mu_run_test(test_qsort);
-	mu_run_test(test_heapsort);
+//	mu_run_test(test_heapsort);
 	mu_run_test(test_mergesort);
 	
 	return NULL;
