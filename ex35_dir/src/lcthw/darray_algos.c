@@ -9,6 +9,12 @@ static void merged( void **contents , int start , int mid  ,int end , int (*cmp)
 
 int heapsort( void *base , int count , int num_size , int (*cmp)(const void * , const void*));
 
+static void heapify( void **contents , int count , int (*cmp)(const void * , const void *));
+
+static void siftdown( void **contents , int start , int end , int (*cmp)(const void * , const void *));
+
+static inline void swap( void **contents , int a , int b);
+
 
 int DArray_qsort(DArray *array , DArray_compare cmp)
 {
@@ -96,17 +102,34 @@ int heapsort( void *base , int count , int size , int (*cmp)(const void * , cons
 	void **contents = (void**)base;
 	int end = count - 1;
 
-	heapify( contents , count);
+	heapify( contents , count , cmp);
 
 	while( end > 0 ) /* there are more than one in heap*/
 	{
 		swap( contents , 0 , end );
 		end -= 1;
-		siftdown( contents , 0 , end);
+		siftdown( contents , 0 , end , cmp);
 		
 	}
 	return 0;
 }
+
+static void heapify ( void **contents , int count , int (*cmp)(const void * , const void *))
+{
+	int start = (count - 2) /2;
+
+	if( count <= 1 )
+		return ; //already sorted
+
+	while( start >= 0) // do filtdown from the last parent to the root
+	{
+		siftdown( contents , start , count -1  , cmp);
+		start -= 1;
+	}
+
+	return ;
+}
+		
 
 
 static inline void swap( void **contents , int a , int b)
@@ -116,21 +139,21 @@ static inline void swap( void **contents , int a , int b)
 	contents[b] = tmp;
 }
 
-static void siftdown( void **contents , int begin , int end)
+static void siftdown( void **contents , int begin , int end , int (*cmp)(const void * , const void *))
 {
 	int root = begin;
-	int swip = root;
+	int swip ;
 	int child;
 
 	while( root*2 + 1 <= end)
 	{
 		swip = root;
 		child = swip * 2 + 1;
-		if( cmp( contents[swip] , contents[child]) >0 )
+		if( cmp( contents + swip , contents + child) < 0 )
 		{
 			swip = child;
 		}
-		if( child +1 <= end && cmp(contents[swip] , contents[child +1] > 0))
+		if( child +1 <= end && cmp(contents + swip , contents + child +1 ) < 0)
 		{
 			swip = child + 1;
 		}

@@ -21,6 +21,7 @@ DArray_expand	src/lcthw/darray.c	/^int DArray_expand(DArray *array)$/;"	f
 DArray_first	src/lcthw/darray.h	31;"	d
 DArray_free	src/lcthw/darray.h	74;"	d
 DArray_get	src/lcthw/darray.h	/^static inline void *DArray_get(DArray  *array , int i)$/;"	f
+DArray_heapsort	src/lcthw/darray_algos.c	/^int DArray_heapsort(DArray *array , DArray_compare cmp)$/;"	f
 DArray_last	src/lcthw/darray.h	30;"	d
 DArray_max	src/lcthw/darray.h	33;"	d
 DArray_mergesort	src/lcthw/darray_algos.c	/^int DArray_mergesort( DArray *array , DArray_compare cmp)$/;"	f
@@ -63,6 +64,8 @@ do_mergesort	src/lcthw/darray_algos.c	/^int do_mergesort( void **contents , int 
 element_size	src/lcthw/darray.h	/^	size_t element_size; \/\/ sizeof(itmes)$/;"	m	struct:DArray
 end	src/lcthw/darray.h	/^	int end; \/\/ the first emtpy index$/;"	m	struct:DArray
 expand_rate	src/lcthw/darray.h	/^	size_t expand_rate; \/\/ default expand nums$/;"	m	struct:DArray
+heapify	src/lcthw/darray_algos.c	/^static void heapify ( void **contents , int count , int (*cmp)(const void * , const void *))$/;"	f	file:
+heapsort	src/lcthw/darray_algos.c	/^int heapsort( void *base , int count , int size , int (*cmp)(const void * , const void *))$/;"	f
 is_sorted	tests/darray_algos_tests.c	/^int is_sorted(DArray *array)$/;"	f
 log_err	src/lcthw/dbg.h	35;"	d
 log_info	src/lcthw/dbg.h	39;"	d
@@ -75,10 +78,13 @@ mu_run_test	tests/minunit.h	12;"	d
 mu_suite_start	tests/minunit.h	9;"	d
 run_sort_test	tests/darray_algos_tests.c	/^char *run_sort_test( int (*func)(DArray* , DArray_compare) , const char *name)$/;"	f
 sentinel	src/lcthw/dbg.h	43;"	d
+siftdown	src/lcthw/darray_algos.c	/^static void siftdown( void **contents , int begin , int end , int (*cmp)(const void * , const void *))$/;"	f	file:
+swap	src/lcthw/darray_algos.c	/^static inline void swap( void **contents , int a , int b)$/;"	f	file:
 test_create	tests/darray_tests.c	/^char *test_create()$/;"	f
 test_destroy	tests/darray_tests.c	/^char *test_destroy()$/;"	f
 test_expand_contract	tests/darray_tests.c	/^char *test_expand_contract()$/;"	f
 test_get	tests/darray_tests.c	/^char *test_get()$/;"	f
+test_heapsort	tests/darray_algos_tests.c	/^char *test_heapsort()$/;"	f
 test_mergesort	tests/darray_algos_tests.c	/^char *test_mergesort()$/;"	f
 test_new	tests/darray_tests.c	/^char *test_new()$/;"	f
 test_push_pop	tests/darray_tests.c	/^char *test_push_pop()$/;"	f
