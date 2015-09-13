@@ -49,11 +49,13 @@ char *run_sort_test( int (*func)(DArray* , DArray_compare) , const char *name)
 
 char *test_qsort()
 {
+	printf("now in quitcksort\n");
 	return run_sort_test(DArray_qsort  , "qsort");
 }
 
 char *test_heapsort()
 {
+	printf("now in heapsort\n");
 	return run_sort_test(DArray_heapsort , "heapsort");
 }
 

@@ -15,10 +15,18 @@ static void siftdown( void **contents , int start , int end , int (*cmp)(const v
 
 static inline void swap( void **contents , int a , int b);
 
+static int quicksort( void *base , int count , int size , int (*cmp)(const void *  , const void *));
+
+static void do_quicksort( void **contents , int start , int end , int (*cmp)(const void* , const void *));
+
+static int partition( void **contents , int start , int end , int (*cmp)(const void* , const void*));
+
+
 
 int DArray_qsort(DArray *array , DArray_compare cmp)
 {
-	qsort(array->contents , DArray_count(array) , sizeof(void *) , cmp);
+//	qsort(array->contents , DArray_count(array) , sizeof(void *) , cmp);
+	quicksort( array->contents , DArray_count(array) , sizeof(void*) , cmp);
 	return 0;
 }
 
@@ -170,3 +178,52 @@ static void siftdown( void **contents , int begin , int end , int (*cmp)(const v
 			
 }
 	
+
+
+static int quicksort( void *base , int count , int size , int (*cmp)(const void *  , const void *))
+{
+	
+	void **contents = (void**)base;
+	
+	do_quicksort( contents , 0 , count -1 , cmp);
+	return 0;
+}
+
+static void do_quicksort( void **contents , int start , int end , int (*cmp)(const void* , const void *))
+{
+	if( start >= end )
+		return ;
+
+	int p = partition(contents , start , end , cmp);
+	do_quicksort(contents , start , p , cmp);
+	do_quicksort(contents , p+1 , end , cmp);
+	return ;
+}
+
+static int partition( void **contents , int start , int end , int (*cmp)(const void* , const void*))
+{
+	int pivot = start;
+
+	int i = start -1 , j = end +1;
+
+	while( 1 ){
+		do{
+			j-- ;
+		}while( cmp( contents + j , contents + pivot) > 0);
+		
+		do{
+			i++ ;
+		}while( cmp( contents +i , contents + pivot ) < 0 );
+
+		if( i < j ){
+			swap( contents , i , j);
+		}
+
+		else
+			return j;
+		
+	}
+}
+			
+
+		
