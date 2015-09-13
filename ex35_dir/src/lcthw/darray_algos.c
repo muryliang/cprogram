@@ -1,11 +1,14 @@
 #include<lcthw/darray_algos.h>
 #include<stdlib.h>
 
-int mergesort( void *base , int count , int num_size , int (*cmp)(const void* , const void *));
+static int mergesort( void *base , int count , int num_size , int (*cmp)(const void* , const void *));
 
-int do_mergesort( void **contents , int start , int end  , int (*cmp)(const void * , const void *));
+static int do_mergesort( void **contents , int start , int end  , int (*cmp)(const void * , const void *));
 
-void merged( void **contents , int start , int mid  ,int end , int (*cmp)(const void* , const void *));
+static void merged( void **contents , int start , int mid  ,int end , int (*cmp)(const void* , const void *));
+
+int heapsort( void *base , int count , int num_size , int (*cmp)(const void * , const void*));
+
 
 int DArray_qsort(DArray *array , DArray_compare cmp)
 {
@@ -13,11 +16,11 @@ int DArray_qsort(DArray *array , DArray_compare cmp)
 	return 0;
 }
 
-/*int DArray_heapsort(DArray *array , DArray_compare cmp)
+int DArray_heapsort(DArray *array , DArray_compare cmp)
 {
 	return heapsort( array->contents , DArray_count(array) , sizeof(void *) , cmp);
 }
-*/
+
 
 int DArray_mergesort( DArray *array , DArray_compare cmp)
 {
@@ -85,3 +88,61 @@ void merged( void **contents , int start , int mid , int end , int (*cmp)(const 
 error:
 	return ;
 }	
+
+
+
+int heapsort( void *base , int count , int size , int (*cmp)(const void * , const void *))
+{
+	void **contents = (void**)base;
+	int end = count - 1;
+
+	heapify( contents , count);
+
+	while( end > 0 ) /* there are more than one in heap*/
+	{
+		swap( contents , 0 , end );
+		end -= 1;
+		siftdown( contents , 0 , end);
+		
+	}
+	return 0;
+}
+
+
+static inline void swap( void **contents , int a , int b)
+{
+	void *tmp = contents[a];
+	contents[a] = contents[b];
+	contents[b] = tmp;
+}
+
+static void siftdown( void **contents , int begin , int end)
+{
+	int root = begin;
+	int swip = root;
+	int child;
+
+	while( root*2 + 1 <= end)
+	{
+		swip = root;
+		child = swip * 2 + 1;
+		if( cmp( contents[swip] , contents[child]) >0 )
+		{
+			swip = child;
+		}
+		if( child +1 <= end && cmp(contents[swip] , contents[child +1] > 0))
+		{
+			swip = child + 1;
+		}
+
+		if( swip == root )
+			return ;
+		else
+		{
+			swap( contents , root , swip);
+			root = swip;
+		}
+	}
+			
+}
+	
