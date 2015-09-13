@@ -153,6 +153,7 @@ static void siftdown( void **contents , int begin , int end , int (*cmp)(const v
 		{
 			swip = child;
 		}
+
 		if( child +1 <= end && cmp(contents + swip , contents + child +1 ) < 0)
 		{
 			swip = child + 1;
