@@ -6,7 +6,7 @@ typedef union RMElement {
 	struct {
 		uint32_t key;
 		uint32_t value;
-	} date;  // when store in  it is raw ,when search and sort use the struct
+	} data;  // when store in  it is raw ,when search and sort use the struct
 }RMElement ;
 
 typedef struct RadixMap{

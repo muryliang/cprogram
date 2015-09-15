@@ -1,0 +1,5 @@
+DEBUG tests/radix_tests.c:106 ------RUNNING: ./tests/radix_tests
+DEBUG tests/radix_tests.c:101 
+------ test_operations
+(ERROR) src/lcthw/radixmap.c:115:errno: NONE) radixmap is full
+(ERROR) tests/radix_tests.c:12:errno: NONE) failed to add key 1873672696 .

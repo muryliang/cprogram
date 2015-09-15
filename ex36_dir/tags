@@ -1,0 +1,62 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BADFUNCS	Makefile	/^BADFUNCS='[^_.>a-zA-Z0-9](str(n?cpy|n?cat|xfrm|n?dup|str|pbrk|tok|_)stpn?cpy|a?sn?printf|byte_)'$/;"	m
+ByteOf	src/lcthw/radixmap.c	39;"	d	file:
+CFLAGS	Makefile	/^CFLAGS = -g -O0 -Wall -Wextra -Isrc -rdynamic -DNDEBUG $(OPTFALGS)$/;"	m
+CFLAGS	Makefile	/^dev: CFLAGS=-g -Wall -Isrc -Wall -Wextra $(OPTFLAGS)$/;"	m
+LDLIBS	Makefile	/^LDLIBS = -ldl $(OPTLIBS)$/;"	m
+NDEBUG	tests/minunit.h	1;"	d
+OBJECTS	Makefile	/^OBJECTS = $(patsubst %.c,%.o,$(SOURCES))$/;"	m
+PREFIX	Makefile	/^PREFIX ?= \/usr\/local$/;"	m
+RMElement	src/lcthw/radixmap.h	/^typedef union RMElement {$/;"	u
+RMElement	src/lcthw/radixmap.h	/^}RMElement ;$/;"	t	typeref:union:RMElement
+RUN_TESTS	tests/minunit.h	15;"	d
+RadixMap	src/lcthw/radixmap.h	/^typedef struct RadixMap{$/;"	s
+RadixMap	src/lcthw/radixmap.h	/^} RadixMap;$/;"	t	typeref:struct:RadixMap
+RadixMap_add	src/lcthw/radixmap.c	/^int RadixMap_add(RadixMap *map , uint32_t key , uint32_t value)$/;"	f
+RadixMap_create	src/lcthw/radixmap.c	/^RadixMap *RadixMap_create( size_t max)$/;"	f
+RadixMap_delete	src/lcthw/radixmap.c	/^int RadixMap_delete( RadixMap *map , RMElement *el)$/;"	f
+RadixMap_destroy	src/lcthw/radixmap.c	/^void RadixMap_destroy( RadixMap *map)$/;"	f
+RadixMap_find	src/lcthw/radixmap.c	/^RMElement *RadixMap_find(RadixMap *map , uint32_t to_find)$/;"	f
+RadixMap_sort	src/lcthw/radixmap.c	/^void RadixMap_sort(RadixMap *map)$/;"	f
+SOURCES	Makefile	/^SOURCES = $(wildcard src\/**\/*.c src\/*.c)$/;"	m
+SO_TARGET	Makefile	/^SO_TARGET = $(patsubst %.a, %.so , $(TARGET))$/;"	m
+TARGET	Makefile	/^TARGET = build\/libYOUR_LIBRARY.a$/;"	m
+TESTS	Makefile	/^TESTS = $(patsubst %.c,%,$(TEST_SRC))$/;"	m
+TEST_SRC	Makefile	/^TEST_SRC = $(wildcard tests\/*_tests.c)$/;"	m
+__dbg_h__	src/lcthw/dbg.h	2;"	d
+_minunit_h	tests/minunit.h	3;"	d
+all_tests	tests/radix_tests.c	/^RUN_TESTS(all_tests);$/;"	v
+all_tests	tests/radix_tests.c	/^char *all_tests()$/;"	f
+check	src/lcthw/dbg.h	41;"	d
+check_debug	src/lcthw/dbg.h	46;"	d
+check_mem	src/lcthw/dbg.h	45;"	d
+check_order	tests/radix_tests.c	/^static int check_order(RadixMap *map)$/;"	f	file:
+clean_errno	src/lcthw/dbg.h	33;"	d
+contents	src/lcthw/radixmap.h	/^	RMElement *contents;$/;"	m	struct:RadixMap
+counter	src/lcthw/radixmap.h	/^	uint32_t counter;$/;"	m	struct:RadixMap
+data	src/lcthw/radixmap.h	/^	} data;  \/\/ when store in  it is raw ,when search and sort use the struct$/;"	m	union:RMElement	typeref:struct:RMElement::__anon1
+debug	src/lcthw/dbg.h	27;"	d
+debug	src/lcthw/dbg.h	29;"	d
+end	src/lcthw/radixmap.h	/^	size_t end;$/;"	m	struct:RadixMap
+key	src/lcthw/radixmap.h	/^		uint32_t key;$/;"	m	struct:RMElement::__anon1
+log_err	src/lcthw/dbg.h	35;"	d
+log_info	src/lcthw/dbg.h	39;"	d
+log_warn	src/lcthw/dbg.h	37;"	d
+make_random	tests/radix_tests.c	/^static int make_random(RadixMap *map)$/;"	f	file:
+max	src/lcthw/radixmap.h	/^	size_t max;$/;"	m	struct:RadixMap
+mu_assert	tests/minunit.h	11;"	d
+mu_run_test	tests/minunit.h	12;"	d
+mu_suite_start	tests/minunit.h	9;"	d
+radix_sort	src/lcthw/radixmap.c	/^static inline void radix_sort( short offset , uint64_t max , uint64_t *source , uint64_t *dest)$/;"	f	file:
+raw	src/lcthw/radixmap.h	/^	uint64_t raw;$/;"	m	union:RMElement
+sentinel	src/lcthw/dbg.h	43;"	d
+temp	src/lcthw/radixmap.h	/^	RMElement *temp;$/;"	m	struct:RadixMap
+test_operations	tests/radix_tests.c	/^static char *test_operations()$/;"	f	file:
+test_search	tests/radix_tests.c	/^static int test_search(RadixMap *map)$/;"	f	file:
+tests_run	tests/minunit.h	/^int tests_run;$/;"	v
+value	src/lcthw/radixmap.h	/^		uint32_t value;$/;"	m	struct:RMElement::__anon1
