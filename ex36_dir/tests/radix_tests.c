@@ -73,15 +73,15 @@ static char *test_operations()
 	
 	while(map->end > 0 ){
 		RMElement *el = RadixMap_find(map , map->contents[map->end /2].data.key);
-	mu_assert(el != NULL , "should get a result");
-	
-	size_t old_end  = map->end;
+		mu_assert(el != NULL , "should get a result");
+		
+		size_t old_end  = map->end;
 
-	mu_assert(RadixMap_delete(map, el) == 0 , "didn't delete it");
-	mu_assert(old_end -1 == map->end , "wrong size after delete");
-	
-	/*test that the end is now the old value , but uint32 max so ti trails off*/
-	mu_assert(check_order(map), "radixmap didn't stay ordered after delete.");
+		mu_assert(RadixMap_delete(map, el) == 0 , "didn't delete it");
+		mu_assert(old_end -1 == map->end , "wrong size after delete");
+		
+		/*test that the end is now the old value , but uint32 max so ti trails off*/
+		mu_assert(check_order(map), "radixmap didn't stay ordered after delete.");
 	}
 
 	RadixMap_destroy(map);
