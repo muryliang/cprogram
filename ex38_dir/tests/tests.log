@@ -1,60 +1,125 @@
-(ERROR) tests/bstrlib_tests.c:38:errno: NONE) worng bconcat
-DEBUG tests/hashmap_tests.c:117 ------RUNNING: ./tests/hashmap_tests
-DEBUG tests/hashmap_tests.c:108 
+FNV	A32	DJB
+1008	973	1017
+957	978	996
+1028	1056	1024
+954	996	997
+1029	966	1009
+1034	969	1055
+1038	1016	1023
+1047	987	950
+955	1031	959
+1007	1010	1011
+972	1018	1031
+1018	1032	985
+970	985	1017
+1009	1026	1008
+1034	1003	975
+963	1012	1010
+1021	973	1066
+1009	1013	947
+1003	994	987
+1062	1003	1045
+999	1022	1012
+1012	1022	990
+1025	997	1033
+1018	973	1055
+1026	954	928
+982	988	1004
+1001	1025	1042
+1042	1010	1042
+979	976	955
+994	998	1059
+972	1019	1031
+947	1051	1030
+1000	988	1016
+1005	981	940
+1024	993	983
+911	1030	995
+978	1032	1011
+1018	1007	983
+934	1003	1030
+1040	978	1005
+989	1036	976
+1023	997	1003
+1030	1045	1024
+1042	1006	1000
+1024	939	976
+999	998	966
+1012	1080	999
+1008	1008	979
+966	935	1022
+924	1020	1000
+1042	1016	998
+990	1023	1012
+996	935	990
+1052	1003	1051
+997	1019	967
+1018	1077	1030
+996	997	1005
+1001	999	1046
+934	981	970
+971	1031	1030
+938	985	932
+963	973	1027
+1018	978	978
+971	1005	1030
+989	1006	978
+1003	968	989
+999	1028	991
+1020	1018	997
+1034	969	968
+988	1053	1040
+1064	956	1050
+1017	977	973
+981	987	964
+968	1004	937
+1029	1044	1044
+976	978	985
+953	992	948
+972	1051	981
+1032	966	1008
+973	946	970
+1001	966	995
+1047	1030	1021
+1024	976	1046
+1031	979	995
+958	1023	1000
+1066	988	1010
+999	1016	987
+1056	987	955
+1020	966	986
+979	985	962
+983	1006	983
+988	976	996
+1008	1017	926
+1003	1023	1048
+983	999	1015
+1050	983	965
+976	998	995
+970	983	993
+936	1022	1037
+995	960	995
+DEBUG tests/hashmap_tests.c:120 ------RUNNING: ./tests/hashmap_tests
+DEBUG tests/hashmap_tests.c:111 
 ------ test_create
-DEBUG tests/hashmap_tests.c:109 
+DEBUG tests/hashmap_tests.c:112 
 ------ test_get_set
 DEBUG src/lcthw/hashmap.c:130 try: 0
 DEBUG src/lcthw/hashmap.c:130 try: 0
 DEBUG src/lcthw/hashmap.c:130 try: 0
-DEBUG tests/hashmap_tests.c:110 
+DEBUG tests/hashmap_tests.c:113 
 ------ test_traverse
 DEBUG tests/hashmap_tests.c:17 key: test data 2
 DEBUG tests/hashmap_tests.c:17 key: test data 1
 DEBUG tests/hashmap_tests.c:17 key: test data 3
 DEBUG tests/hashmap_tests.c:24 key:test data 2
 DEBUG tests/hashmap_tests.c:24 key:test data 1
-DEBUG tests/hashmap_tests.c:111 
+DEBUG tests/hashmap_tests.c:114 
 ------ test_delete
 DEBUG src/lcthw/hashmap.c:130 try: 0
 DEBUG src/lcthw/hashmap.c:130 try: 0
 DEBUG src/lcthw/hashmap.c:130 try: 0
-DEBUG tests/hashmap_tests.c:112 
------- test_destroy
-DEBUG tests/lists_tests.c:107 ------RUNNING: ./tests/lists_tests
-DEBUG tests/lists_tests.c:96 
------- test_create
-DEBUG tests/lists_tests.c:97 
------- test_push_pop
-DEBUG tests/lists_tests.c:98 
------- test_unshift
-DEBUG tests/lists_tests.c:99 
------- test_remove
-DEBUG tests/lists_tests.c:100 
------- test_shift
-DEBUG tests/lists_tests.c:101 
------- test_destroy
-DEBUG tests/hashmap_tests.c:117 ------RUNNING: ./tests/hashmap_tests
-DEBUG tests/hashmap_tests.c:108 
------- test_create
-DEBUG tests/hashmap_tests.c:109 
------- test_get_set
-DEBUG src/lcthw/hashmap.c:130 try: 0
-DEBUG src/lcthw/hashmap.c:130 try: 0
-DEBUG src/lcthw/hashmap.c:130 try: 0
-DEBUG tests/hashmap_tests.c:110 
------- test_traverse
-DEBUG tests/hashmap_tests.c:17 key: test data 2
-DEBUG tests/hashmap_tests.c:17 key: test data 1
-DEBUG tests/hashmap_tests.c:17 key: test data 3
-DEBUG tests/hashmap_tests.c:24 key:test data 2
-DEBUG tests/hashmap_tests.c:24 key:test data 1
-DEBUG tests/hashmap_tests.c:111 
------- test_delete
-DEBUG src/lcthw/hashmap.c:130 try: 0
-DEBUG src/lcthw/hashmap.c:130 try: 0
-DEBUG src/lcthw/hashmap.c:130 try: 0
-DEBUG tests/hashmap_tests.c:112 
+DEBUG tests/hashmap_tests.c:115 
 ------ test_destroy
 DEBUG tests/lists_tests.c:107 ------RUNNING: ./tests/lists_tests
 DEBUG tests/lists_tests.c:96 

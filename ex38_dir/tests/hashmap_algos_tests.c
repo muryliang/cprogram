@@ -1,5 +1,5 @@
 #include <lcthw/bstrlib.h>
-//#include <lcthw/hashmap.h>
+#include <lcthw/hashmap_algos.h>
 #include <lcthw/hashmap.h>
 #include <lcthw/darray.h>
 #include "minunit.h"
@@ -63,6 +63,9 @@ int gen_keys( DArray *keys , int num_keys)
 	FILE *urand = fopen("/dev/urandom" , "r");
 	check(urand != NULL , "failed to open /dev/urandom");
 
+	struct bStream *stream = bsopen((bNread)fread , urand);
+	check(stream != NULL , "failed to open /dev/urandom");
+
 	bstring key = bfromcstr("");
 	int rc = 0;
 
@@ -115,10 +118,10 @@ char *test_distribution()
 	fprintf(stderr , "FNV\tA32\tDJB\n");
 	
 	for( i = 0 ; i < BUCKETS ; i++){
-		fprintf(stderr , "%d\t\d\t\d\n",
+		fprintf(stderr , "%d\t%d\t%d\n",
 			stats[ALGO_FNV1A][i],
 			stats[ALGO_ADLER32][i],
-			stats[ALGO_DJB][i]
+			stats[ALGO_DJB][i]);
 	}
 
 	destroy_keys(keys);
