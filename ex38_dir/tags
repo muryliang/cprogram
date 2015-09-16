@@ -4,9 +4,9 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ALGO_ADLER32	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB};$/;"	e	enum:__anon1	file:
-ALGO_DJB	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB};$/;"	e	enum:__anon1	file:
-ALGO_FNV1A	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB};$/;"	e	enum:__anon1	file:
+ALGO_ADLER32	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
+ALGO_DJB	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
+ALGO_FNV1A	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
 BADFUNCS	Makefile	/^BADFUNCS='[^_.>a-zA-Z0-9](str(n?cpy|n?cat|xfrm|n?dup|str|pbrk|tok|_)stpn?cpy|a?sn?printf|byte_)'$/;"	m
 BSSSC_BUFF_LEN	src/lcthw/bstrlib.c	2288;"	d	file:
 BSTRLIB_INCLUDE	src/lcthw/bstrlib.h	15;"	d
@@ -66,6 +66,7 @@ Hashmap_fnv1a_hash	src/lcthw/hashmap_algos.c	/^uint32_t Hashmap_fnv1a_hash(void 
 Hashmap_get	src/lcthw/hashmap.c	/^void *Hashmap_get(Hashmap *map , void *key)$/;"	f
 Hashmap_get_node	src/lcthw/hashmap.c	/^static inline int Hashmap_get_node( Hashmap *map , uint32_t hash , DArray *bucket , void*key)$/;"	f	file:
 Hashmap_hash	src/lcthw/hashmap.h	/^typedef uint32_t (*Hashmap_hash)(void* key);$/;"	t
+Hashmap_my_hash	src/lcthw/hashmap_algos.c	/^uint32_t Hashmap_my_hash( void *data)$/;"	f
 Hashmap_node_create	src/lcthw/hashmap.c	/^static inline HashmapNode *Hashmap_node_create( int hash , void *key , void* data)$/;"	f	file:
 Hashmap_set	src/lcthw/hashmap.c	/^int Hashmap_set( Hashmap *map , void* key , void *data)$/;"	f
 Hashmap_traverse	src/lcthw/hashmap.c	/^int Hashmap_traverse(Hashmap *map , Hashmap_traverse_cb traverse_cb)$/;"	f
@@ -93,6 +94,7 @@ List_remove	src/lcthw/list.c	/^void * List_remove(List *list , ListNode *node){$
 List_shift	src/lcthw/list.c	/^void *List_shift(List *list){$/;"	f
 List_unshift	src/lcthw/list.c	/^void List_unshift(List *list , void *value){$/;"	f
 MOD_ADLER	src/lcthw/hashmap_algos.c	/^const int MOD_ADLER = 65521;$/;"	v
+MY_OWN	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
 NDEBUG	src/lcthw/hashmap.c	1;"	d	file:
 NDEBUG	tests/minunit.h	1;"	d
 NUM_KEYS	tests/hashmap_algos_tests.c	57;"	d	file:

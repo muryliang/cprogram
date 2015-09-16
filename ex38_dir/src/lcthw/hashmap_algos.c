@@ -5,6 +5,18 @@
  * http://www.isthe.com/chongo/tech/comp/fnv/index.html#FNV-param
  */
 
+uint32_t Hashmap_my_hash( void *data)
+{
+	bstring s = (bstring)data;
+	uint32_t hash = 0;
+	int i = 0;
+
+	for( i = 0 ; i < blength(s); i++)
+	{
+		hash += bchare(s , i , 0 );
+	}
+	return hash;
+}
 const uint32_t FNV_PRIME = 16777619;
 const uint32_t FNV_OFFSET_BASIS = 2166136261;
 
