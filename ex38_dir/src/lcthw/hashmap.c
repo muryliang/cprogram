@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <lcthw/hashmap.h>
 #include <lcthw/dbg.h>
-#include <lwthw/bstrlib.h>
+#include <lcthw/bstrlib.h>
 
 static int default_compare(void *a , void *b)
 {
@@ -37,7 +37,7 @@ Hashmap *Hashmap_create(Hashmap_compare compare , Hashmap_hash hash)
 
 	map->compare = compare == NULL ? default_compare : compare;
 	map->hash = hash== NULL ? default_hash : hash;
-	map->buckets = Darray_create(sizeof(DArray*) , DEFAUTL_NUMBER_OF_BUCKETS);
+	map->buckets = DArray_create(sizeof(DArray*) , DEFAULT_NUMBER_OF_BUCKETS);
 	map->buckets->end = map->buckets->max; /*fake out expanding it*/
 	check_mem(map->buckets);
 
@@ -59,7 +59,7 @@ void Hashmap_destroy(Hashmap *map)
 				DArray *bucket = DArray_get(map->buckets , i);
 				if(bucket) {
 					for(j = 0;j< DArray_count(bucket); j++){
-						free(Darray_get(bucket,j);
+						free(DArray_get(bucket,j));
 					}
 					DArray_destroy(bucket);
 				}
@@ -87,7 +87,7 @@ static inline DArray *Hashmap_find_bucket(Hashmap *map , void *key,
 			int create , uint32_t *hash_out)
 {
 	uint32_t hash = map->hash(key);
-	int bucket_n = hash % DEFAULT_NUMBER_OF_BUCKES;
+	int bucket_n = hash % DEFAULT_NUMBER_OF_BUCKETS;
 	check(bucket_n >= 0 , "invalid bucket found: %d" , bucket_n);
 	*hash_out = hash; //store it for the return so the caller can use it
 
@@ -108,7 +108,7 @@ error:
 int Hashmap_set( Hashmap *map , void* key , void *data)
 {
 	uint32_t hash = 0;
-	Darray *bucket = Hashmap_find_bucket(map , key , 1 , &hash);
+	DArray *bucket = Hashmap_find_bucket(map , key , 1 , &hash);
 	check(bucket , "error can't create bucket");
 
 	HashmapNode *node = Hashmap_node_create(hash , key , data);
@@ -162,7 +162,7 @@ int Hashmap_traverse(Hashmap *map , Hashmap_traverse_cb traverse_cb)
 
 	for(i = 0 ; i< DArray_count(map->buckets);i++){
 		DArray *bucket = DArray_get(map->buckets , i);
-		if(buckets)
+		if(bucket)
 		{
 			for(j = 0 ; j < DArray_count(bucket);j++)
 			{

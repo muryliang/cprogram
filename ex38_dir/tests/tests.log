@@ -1,0 +1,71 @@
+(ERROR) tests/bstrlib_tests.c:38:errno: NONE) worng bconcat
+DEBUG tests/hashmap_tests.c:117 ------RUNNING: ./tests/hashmap_tests
+DEBUG tests/hashmap_tests.c:108 
+------ test_create
+DEBUG tests/hashmap_tests.c:109 
+------ test_get_set
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG tests/hashmap_tests.c:110 
+------ test_traverse
+DEBUG tests/hashmap_tests.c:17 key: test data 2
+DEBUG tests/hashmap_tests.c:17 key: test data 1
+DEBUG tests/hashmap_tests.c:17 key: test data 3
+DEBUG tests/hashmap_tests.c:24 key:test data 2
+DEBUG tests/hashmap_tests.c:24 key:test data 1
+DEBUG tests/hashmap_tests.c:111 
+------ test_delete
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG tests/hashmap_tests.c:112 
+------ test_destroy
+DEBUG tests/lists_tests.c:107 ------RUNNING: ./tests/lists_tests
+DEBUG tests/lists_tests.c:96 
+------ test_create
+DEBUG tests/lists_tests.c:97 
+------ test_push_pop
+DEBUG tests/lists_tests.c:98 
+------ test_unshift
+DEBUG tests/lists_tests.c:99 
+------ test_remove
+DEBUG tests/lists_tests.c:100 
+------ test_shift
+DEBUG tests/lists_tests.c:101 
+------ test_destroy
+DEBUG tests/hashmap_tests.c:117 ------RUNNING: ./tests/hashmap_tests
+DEBUG tests/hashmap_tests.c:108 
+------ test_create
+DEBUG tests/hashmap_tests.c:109 
+------ test_get_set
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG tests/hashmap_tests.c:110 
+------ test_traverse
+DEBUG tests/hashmap_tests.c:17 key: test data 2
+DEBUG tests/hashmap_tests.c:17 key: test data 1
+DEBUG tests/hashmap_tests.c:17 key: test data 3
+DEBUG tests/hashmap_tests.c:24 key:test data 2
+DEBUG tests/hashmap_tests.c:24 key:test data 1
+DEBUG tests/hashmap_tests.c:111 
+------ test_delete
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG src/lcthw/hashmap.c:130 try: 0
+DEBUG tests/hashmap_tests.c:112 
+------ test_destroy
+DEBUG tests/lists_tests.c:107 ------RUNNING: ./tests/lists_tests
+DEBUG tests/lists_tests.c:96 
+------ test_create
+DEBUG tests/lists_tests.c:97 
+------ test_push_pop
+DEBUG tests/lists_tests.c:98 
+------ test_unshift
+DEBUG tests/lists_tests.c:99 
+------ test_remove
+DEBUG tests/lists_tests.c:100 
+------ test_shift
+DEBUG tests/lists_tests.c:101 
+------ test_destroy
