@@ -2,7 +2,7 @@
 #define string_algos_h
 
 #include <lcthw/bstrlib.h>
-#include <lcthw/dattay.h>
+#include <lcthw/darray.h>
 
 typedef struct StringScanner {
 	bstring in;
@@ -17,8 +17,8 @@ int String_find(bstring in , bstring what);
 
 StringScanner *StringScanner_create(bstring in);
 
-int StringScanner_scan(StirngScanner *scan , bstring tofind);
+int StringScanner_scan(StringScanner *scan , bstring tofind);
 
-void StirngScanner_destroy(StringScanner *scan);
+void StringScanner_destroy(StringScanner *scan);
 
 #endif

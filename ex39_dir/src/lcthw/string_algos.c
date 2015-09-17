@@ -1,6 +1,11 @@
 #include <lcthw/string_algos.h>
 #include <limits.h>
 
+/*this function first fill table with the length of pattern
+ * this is used when the last char in the compare is not
+ * appeared in the pattern,then the string shifted a whole length;
+ * otherwise , just shift to the end , this is done by last -i
+ */
 static inline void String_setup_skip_chars(
 	size_t *skip_chars,
 	const unsigned char*needle , ssize_t nlen)
@@ -8,7 +13,7 @@ static inline void String_setup_skip_chars(
 	size_t i = 0;
 	size_t last = nlen - 1;
 	
-	for( i = 0 ; i<UCHAR_MAX +1 , i++){
+	for( i = 0 ; i< UCHAR_MAX +1 ; i++){
 		skip_chars[i] = nlen;
 	}
 	for( i = 0 ; i < last ; i++){
@@ -19,7 +24,7 @@ static inline void String_setup_skip_chars(
 static inline const unsigned char*String_base_search(
 	const unsigned char *haystack , ssize_t hlen,
 	const unsigned char *needle , ssize_t nlen,
-	size_t skip_chars)
+	size_t *skip_chars)
 {
 	size_t i =0;
 	size_t last = nlen -1;
@@ -38,7 +43,7 @@ static inline const unsigned char*String_base_search(
 			}
 		}
 	
-		hlen -= skip_chars[haystack[last]];
+		hlen -= skip_chars[ haystack[last] ];
 		haystack += skip_chars[haystack[last]];
 	}
 
@@ -58,18 +63,18 @@ int String_find( bstring in , bstring what)
 
 	String_setup_skip_chars(skip_chars , needle , nlen);
 	
-	found = Stirng_base_search(haystack , hlen , needle , nlen , skip_chars);
+	found = String_base_search(haystack , hlen , needle , nlen , skip_chars);
 
 	return found != NULL ? found - haystack : -1;
 }
 
-StringScanner *StirngScanner_create(bstring in)
+StringScanner *StringScanner_create(bstring in)
 {
 	StringScanner *scan = calloc(1 , sizeof(StringScanner));
 	check_mem(scan);
 
 	scan->in = in;
-	san_haystack = (const unsigned char*)bdata(in);
+	scan->haystack = (const unsigned char*)bdata(in);
 	scan->hlen = blength(in);
 
 	assert(scan != NULL && "fuck");
@@ -95,6 +100,9 @@ static inline void StringScanner_reset(StringScanner *scan)
 	scan->hlen = blength(scan->in);
 }
 
+/*this func can be used to search string in scan structure in a 
+ * incrementally way
+ */
 int StringScanner_scan(StringScanner *scan ,bstring tofind)
 {
 	const unsigned char* found = NULL;

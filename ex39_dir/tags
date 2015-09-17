@@ -7,6 +7,7 @@
 ALGO_ADLER32	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
 ALGO_DJB	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
 ALGO_FNV1A	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
+ALPHA	tests/string_algos.tests.c	/^struct tagbstring ALPHA = bsStatic("ALPHA");$/;"	v	typeref:struct:tagbstring
 BADFUNCS	Makefile	/^BADFUNCS='[^_.>a-zA-Z0-9](str(n?cpy|n?cat|xfrm|n?dup|str|pbrk|tok|_)stpn?cpy|a?sn?printf|byte_)'$/;"	m
 BSSSC_BUFF_LEN	src/lcthw/bstrlib.c	2288;"	d	file:
 BSTRLIB_INCLUDE	src/lcthw/bstrlib.h	15;"	d
@@ -72,6 +73,7 @@ Hashmap_set	src/lcthw/hashmap.c	/^int Hashmap_set( Hashmap *map , void* key , vo
 Hashmap_traverse	src/lcthw/hashmap.c	/^int Hashmap_traverse(Hashmap *map , Hashmap_traverse_cb traverse_cb)$/;"	f
 Hashmap_traverse_cb	src/lcthw/hashmap.h	/^typedef int (*Hashmap_traverse_cb)(HashmapNode *node);$/;"	t
 INITIAL_STATIC_FIND_INDEX_COUNT	src/lcthw/bstrlib.c	1551;"	d	file:
+IN_STR	tests/string_algos.tests.c	/^struct tagbstring IN_STR = bsStatic("I have ALPHA beta ALPHA and oranges ALPHA");$/;"	v	typeref:struct:tagbstring
 LDLIBS	Makefile	/^LDLIBS = -ldl $(OPTLIBS)$/;"	m
 LIST_FOREACH	src/lcthw/list.h	37;"	d
 LONG_BITS_QTY	src/lcthw/bstrlib.c	1274;"	d	file:
@@ -105,9 +107,20 @@ SOURCES	Makefile	/^SOURCES = $(wildcard src\/**\/*.c src\/*.c)$/;"	m
 SO_TARGET	Makefile	/^SO_TARGET = $(patsubst %.a, %.so , $(TARGET))$/;"	m
 START_VSNBUFF	src/lcthw/bstrlib.c	2754;"	d	file:
 START_VSNBUFF	src/lcthw/bstrlib.c	2770;"	d	file:
+StringScanner	src/lcthw/string_algos.h	/^typedef struct StringScanner {$/;"	s
+StringScanner	src/lcthw/string_algos.h	/^}StringScanner;$/;"	t	typeref:struct:StringScanner
+StringScanner_create	src/lcthw/string_algos.c	/^StringScanner *StringScanner_create(bstring in)$/;"	f
+StringScanner_destroy	src/lcthw/string_algos.c	/^void StringScanner_destroy(StringScanner *scan)$/;"	f
+StringScanner_reset	src/lcthw/string_algos.c	/^static inline void StringScanner_reset(StringScanner *scan)$/;"	f	file:
+StringScanner_scan	src/lcthw/string_algos.c	/^int StringScanner_scan(StringScanner *scan ,bstring tofind)$/;"	f
+StringScanner_set_needle	src/lcthw/string_algos.c	/^static inline void StringScanner_set_needle(StringScanner *scan , bstring tofind)$/;"	f	file:
+String_base_search	src/lcthw/string_algos.c	/^static inline const unsigned char*String_base_search($/;"	f	file:
+String_find	src/lcthw/string_algos.c	/^int String_find( bstring in , bstring what)$/;"	f
+String_setup_skip_chars	src/lcthw/string_algos.c	/^static inline void String_setup_skip_chars($/;"	f	file:
 TARGET	Makefile	/^TARGET = build\/liblcthw.a$/;"	m
 TESTS	Makefile	/^TESTS = $(patsubst %.c,%,$(TEST_SRC))$/;"	m
 TEST_SRC	Makefile	/^TEST_SRC = $(wildcard tests\/*_tests.c)$/;"	m
+TEST_TIME	tests/string_algos.tests.c	/^const int TEST_TIME = 1;$/;"	v
 _CRT_SECURE_NO_WARNINGS	src/lcthw/bstrlib.c	15;"	d	file:
 _DArray_h	src/lcthw/darray.h	2;"	d
 __dbg_h__	src/lcthw/dbg.h	2;"	d
@@ -119,6 +132,7 @@ all_tests	tests/hashmap_tests.c	/^RUN_TESTS(all_tests);$/;"	v
 all_tests	tests/hashmap_tests.c	/^char *all_tests()$/;"	f
 all_tests	tests/lists_tests.c	/^RUN_TESTS(all_tests);$/;"	v
 all_tests	tests/lists_tests.c	/^char *all_tests(){$/;"	f
+all_tests	tests/string_algos.tests.c	/^char *all_tests()$/;"	f
 b	src/lcthw/bstrlib.c	/^	bstring b;$/;"	m	struct:genBstrList	file:
 bBlockCopy	src/lcthw/bstrlib.c	66;"	d	file:
 bNgetc	src/lcthw/bstrlib.h	/^typedef int (*bNgetc) (void *parm);$/;"	t
@@ -295,8 +309,11 @@ gen_keys	tests/hashmap_algos_tests.c	/^int gen_keys( DArray *keys , int num_keys
 hash	src/lcthw/hashmap.h	/^	Hashmap_hash hash;$/;"	m	struct:Hashmap
 hash	src/lcthw/hashmap.h	/^	uint32_t hash;$/;"	m	struct:HashmapNode
 hashmap_algos_h	src/lcthw/hashmap_algos.h	2;"	d
+haystack	src/lcthw/string_algos.h	/^	const unsigned char *haystack;$/;"	m	struct:StringScanner
 heapify	src/lcthw/darray_algos.c	/^static void heapify ( void **contents , int count , int (*cmp)(const void * , const void *))$/;"	f	file:
 heapsort	src/lcthw/darray_algos.c	/^int heapsort( void *base , int count , int size , int (*cmp)(const void * , const void *))$/;"	f
+hlen	src/lcthw/string_algos.h	/^	ssize_t hlen;$/;"	m	struct:StringScanner
+in	src/lcthw/string_algos.h	/^	bstring in;$/;"	m	struct:StringScanner
 instr_fnptr	src/lcthw/bstrlib.c	/^typedef int (*instr_fnptr) (const_bstring s1, int pos, const_bstring s2);$/;"	t	file:
 invertCharField	src/lcthw/bstrlib.c	/^static void invertCharField (struct charField * cf) {$/;"	f	file:
 isEOF	src/lcthw/bstrlib.c	/^	int isEOF;		\/* track file's EOF state *\/$/;"	m	struct:bStream	file:
@@ -317,7 +334,9 @@ mlen	src/lcthw/bstrlib.h	/^    int qty, mlen;$/;"	m	struct:bstrList
 mu_assert	tests/minunit.h	11;"	d
 mu_run_test	tests/minunit.h	12;"	d
 mu_suite_start	tests/minunit.h	9;"	d
+needle	src/lcthw/string_algos.h	/^	const unsigned char *needle;$/;"	m	struct:StringScanner
 next	src/lcthw/list.h	/^	struct ListNode *next;$/;"	m	struct:ListNode	typeref:struct:ListNode::ListNode
+nlen	src/lcthw/string_algos.h	/^	ssize_t nlen;$/;"	m	struct:StringScanner
 parm	src/lcthw/bstrlib.c	/^	void * parm;		\/* The stream handle for core stream *\/$/;"	m	struct:bStream	file:
 partition	src/lcthw/darray_algos.c	/^static int partition( void **contents , int start , int end , int (*cmp)(const void* , const void*))$/;"	f	file:
 prev	src/lcthw/list.h	/^	struct ListNode *prev;$/;"	m	struct:ListNode	typeref:struct:ListNode::ListNode
@@ -328,8 +347,10 @@ sentinel	src/lcthw/dbg.h	43;"	d
 setInCharField	src/lcthw/bstrlib.c	1280;"	d	file:
 setInCharField	src/lcthw/bstrlib.c	1290;"	d	file:
 siftdown	src/lcthw/darray_algos.c	/^static void siftdown( void **contents , int begin , int end , int (*cmp)(const void * , const void *))$/;"	f	file:
+skip_chars	src/lcthw/string_algos.h	/^	size_t skip_chars[UCHAR_MAX+1];$/;"	m	struct:StringScanner
 slen	src/lcthw/bstrlib.h	/^	int slen;$/;"	m	struct:tagbstring
 snapUpSize	src/lcthw/bstrlib.c	/^static int snapUpSize (int i) {$/;"	f	file:
+string_algos_h	src/lcthw/string_algos.h	2;"	d
 swap	src/lcthw/darray_algos.c	/^static inline void swap( void **contents , int a , int b)$/;"	f	file:
 tagbstring	src/lcthw/bstrlib.h	/^struct tagbstring {$/;"	s
 test1	tests/hashmap_algos_tests.c	/^struct tagbstring test1 = bsStatic("test data 1");$/;"	v	typeref:struct:tagbstring
@@ -344,6 +365,7 @@ test3	tests/lists_tests.c	/^char *test3 = "test3 data";$/;"	v
 testInCharField	src/lcthw/bstrlib.c	1279;"	d	file:
 testInCharField	src/lcthw/bstrlib.c	1289;"	d	file:
 test_adler32	tests/hashmap_algos_tests.c	/^char *test_adler32()$/;"	f
+test_binstr_performance	tests/string_algos.tests.c	/^char *test_binstr_performance()$/;"	f
 test_create	tests/hashmap_tests.c	/^char *test_create()$/;"	f
 test_create	tests/lists_tests.c	/^char *test_create(){$/;"	f
 test_delete	tests/hashmap_tests.c	/^char *test_delete()$/;"	f
@@ -351,10 +373,13 @@ test_destroy	tests/hashmap_tests.c	/^char *test_destroy()$/;"	f
 test_destroy	tests/lists_tests.c	/^char *test_destroy(){$/;"	f
 test_distribution	tests/hashmap_algos_tests.c	/^char *test_distribution()$/;"	f
 test_djb	tests/hashmap_algos_tests.c	/^char *test_djb()$/;"	f
+test_find_and_scan	tests/string_algos.tests.c	/^char *test_find_and_scan()$/;"	f
+test_find_performance	tests/string_algos.tests.c	/^char *test_find_performance()$/;"	f
 test_fnv1a	tests/hashmap_algos_tests.c	/^char *test_fnv1a()$/;"	f
 test_get_set	tests/hashmap_tests.c	/^char *test_get_set()$/;"	f
 test_push_pop	tests/lists_tests.c	/^char *test_push_pop(){$/;"	f
 test_remove	tests/lists_tests.c	/^char *test_remove(){$/;"	f
+test_scan_performance	tests/string_algos.tests.c	/^char *test_scan_performance()$/;"	f
 test_shift	tests/lists_tests.c	/^char *test_shift(){$/;"	f
 test_traverse	tests/hashmap_tests.c	/^char *test_traverse()$/;"	f
 test_unshift	tests/lists_tests.c	/^char *test_unshift(){$/;"	f
