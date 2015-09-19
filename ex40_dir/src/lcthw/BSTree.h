@@ -10,11 +10,11 @@ typedef struct BSTreeNode{
 	struct BSTreeNode *left;
 	struct BSTreeNode *right;
 	struct BSTreeNode *parent;
-}BSTree_Node;
+}BSTreeNode;
 
 typedef struct BSTree {
 	int count;
-	BStree_compare compare;
+	BSTree_compare compare;
 	BSTreeNode *root;
 } BSTree;
 
@@ -24,7 +24,7 @@ BSTree *BSTree_create(BSTree_compare compare);
 void BSTree_destroy(BSTree *map);
 
 int BSTree_set(BSTree *map , void *key , void *data);
-void BSTree_get(BSTree *map ,  void *key);
+void* BSTree_get(BSTree *map ,  void *key);
 
 int BSTree_traverse(BSTree *map , BSTree_traverse_cb traverse_cb);
 

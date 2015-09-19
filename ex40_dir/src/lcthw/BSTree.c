@@ -16,6 +16,13 @@ BSTree *BSTree_create(BSTree_compare compare)
 	map->compare = compare == NULL ? default_compare : compare;
 	
 	return map;
+
+error:
+	if(map){
+		BSTree_destroy(map);
+	}
+	return NULL;
+
 }
 
 static int BSTree_destroy_cb(BSTreeNode *node)
@@ -111,7 +118,7 @@ void *BSTree_get(BSTree *map , void *key)
 	}
 }
 
-static inline int BStree_traverse_nodes(BSTreeNode *node , BSTree_traverse_cb traverse_cb)
+static inline int BSTree_traverse_nodes(BSTreeNode *node , BSTree_traverse_cb traverse_cb)
 {
 	int rc = 0;
 
@@ -144,7 +151,7 @@ static inline BSTreeNode *BSTree_find_min(BSTreeNode *node)
 	return node;
 }
 
-static inline void BSTree_replace_node_in_parent(BSTree *map , BSTreeNode *node , BStreeNode *new_value)
+static inline void BSTree_replace_node_in_parent(BSTree *map , BSTreeNode *node , BSTreeNode *new_value)
 {
 	if(node->parent){
 		if(node == node->parent->left) {
@@ -169,7 +176,7 @@ static inline void BSTree_swap(BSTreeNode *a , BSTreeNode *b)
 	temp = b->data ; b->data = a->data ; a->data = temp;
 }
 
-static inline BSTreeNode *BSTree_node_delete(BSTree *map , BSTreeNode *node , ovid *key)
+static inline BSTreeNode *BSTree_node_delete(BSTree *map , BSTreeNode *node , void *key)
 {
 	int cmp = map->compare(node->key , key );
 	
@@ -180,24 +187,33 @@ static inline BSTreeNode *BSTree_node_delete(BSTree *map , BSTreeNode *node , ov
 			/*not found*/
 			return NULL;
 		}
-	} else {
+	}
+	else if(cmp > 0 ){
+		if(node->right ) {
+			return BSTree_node_delete(map , node->right , key );
+		} else {
+			/*not found*/
+			return NULL;
+		}
+	} 
+	else {
 		if(node->left && node->right) {
 		//swap this node for the smallese node that is bigger than us
 		BSTreeNode *successor = BSTree_find_min(node->right);
-		BStree_swap(successor , node);
+		BSTree_swap(successor , node);
 
 		/*this leaves the old successor with possibly a right child*/
 		/*so replace it with that right child*/
-	BStree_replace_node_in_parent(map , successor , successor->right);
+		BSTree_replace_node_in_parent(map , successor , successor->right);
 	
 	/*finally it's swapped , so return successor instead of node*/
-	return successor;
+		return successor;
 	} else if(node->left){
-		BStree_replace_node_in_parent(map , node , node->left);
+		BSTree_replace_node_in_parent(map , node , node->left);
 	} else if(node->right){
-		BSTree_replace_node_In_parent(map , node , node->right);
+		BSTree_replace_node_in_parent(map , node , node->right);
 	} else {
-		BStree_replace_node_in_parent(map  , node , NULL );
+		BSTree_replace_node_in_parent(map  , node , NULL );
 	}
 
 	return node;
@@ -210,7 +226,7 @@ void *BSTree_delete( BSTree *map , void *key)
 	void *data = NULL;
 	
 	if(map->root) {
-		BStreeNode *node = BStree_node_delete(map , map->root , key);
+		BSTreeNode *node = BSTree_node_delete(map , map->root , key);
 	
 		if(node){
 			data = node->data;
