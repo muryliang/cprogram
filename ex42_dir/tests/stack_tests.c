@@ -41,7 +41,8 @@ char *test_push_pop()
 		mu_assert(val == tests[i],  "wrong value on pop");
 	}
 
-	printf("the stackcount is %d\n" , Stack_count(stack));
+	printf("and the stackcount is %d\n" , Stack_count(stack));
+
 	mu_assert(Stack_count(stack) == 0 , "wrong count after pop");
 
 	return NULL;

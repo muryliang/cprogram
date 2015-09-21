@@ -27,12 +27,12 @@ char *test_send_recv()
 	int i =0;
 	for( i = 0 ; i < NUM_TESTS ; i++ ){
 		Queue_send(queue , tests[i]);
-		mu_assert(Queue_peek(queue) == test[0] , "wrong next value");
+		mu_assert(Queue_peek(queue) == tests[0] , "wrong next value");
 	}
 	mu_assert(Queue_count(queue) == NUM_TESTS , "wrong  count on send ");
 
 	QUEUE_FOREACH(queue , cur){
-		debug("VAL : $s" , (char *)cur->value);
+		debug("VAL : %s" , (char *)cur->value);
 	}
 
 	for( i = 0 ; i < NUM_TESTS ; i++){
@@ -48,9 +48,9 @@ char *test_send_recv()
 char *all_tests(){
 	mu_suite_start();
 
-	mu_run_test(test_create):
+	mu_run_test(test_create);
 	mu_run_test(test_send_recv);
-	mu_run_test(test_destroy):
+	mu_run_test(test_destroy);
 
 	return NULL;
 }	

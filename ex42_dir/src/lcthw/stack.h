@@ -8,6 +8,8 @@ typedef struct curstruct {
 	void *value;
 } curstruct;
 
+int j = 0;
+
 curstruct curbase;
 curstruct *cur = &curbase;
 
@@ -22,8 +24,7 @@ curstruct *cur = &curbase;
 #define Stack_push(stack,element)   (stack[++sp] = element)
 #define Stack_pop(stack)  stack[sp--]
 #define Stack_peek(stack) stack[sp]
-
-#define STACK_FOREACH(stack,cur)  for( int j = 0 , cur->value=stack[0] ; \
-					(j <= sp) && (cur->value = stack[j] ); j++) 
+#define STACK_FOREACH(stack,cu)  for(  cu->value=stack[0], j = 0 ; \
+					(j <= sp) && (cu->value = stack[j] ); j++) 
 
 #endif
