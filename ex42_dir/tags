@@ -7,7 +7,7 @@
 ALGO_ADLER32	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
 ALGO_DJB	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
 ALGO_FNV1A	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
-ALPHA	tests/string_algos.tests.c	/^struct tagbstring ALPHA = bsStatic("ALPHA");$/;"	v	typeref:struct:tagbstring
+ALPHA	tests/string_algos_tests.c	/^struct tagbstring ALPHA = bsStatic("ALPHA");$/;"	v	typeref:struct:tagbstring
 BADFUNCS	Makefile	/^BADFUNCS='[^_.>a-zA-Z0-9](str(n?cpy|n?cat|xfrm|n?dup|str|pbrk|tok|_)stpn?cpy|a?sn?printf|byte_)'$/;"	m
 BSSSC_BUFF_LEN	src/lcthw/bstrlib.c	2288;"	d	file:
 BSTRLIB_INCLUDE	src/lcthw/bstrlib.h	15;"	d
@@ -21,7 +21,7 @@ BUCKETS	tests/hashmap_algos_tests.c	55;"	d	file:
 BUFFER_LEN	tests/hashmap_algos_tests.c	56;"	d	file:
 CFCLEN	src/lcthw/bstrlib.c	1277;"	d	file:
 CFCLEN	src/lcthw/bstrlib.c	1287;"	d	file:
-CFLAGS	Makefile	/^CFLAGS = -g -O2 -Wall -Wextra -Isrc -rdynamic -DNDEBUG $(OPTFALGS)$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -g -O2 -Wall -Wextra -Isrc -rdynamic -std=c99 -DNDEBUG $(OPTFALGS)$/;"	m
 CFLAGS	Makefile	/^dev: CFLAGS=-g -Wall -Isrc -Wall -Wextra $(OPTFLAGS)$/;"	m
 DArray	src/lcthw/darray.h	/^typedef struct DArray {$/;"	s
 DArray	src/lcthw/darray.h	/^} DArray;$/;"	t	typeref:struct:DArray
@@ -73,7 +73,7 @@ Hashmap_set	src/lcthw/hashmap.c	/^int Hashmap_set( Hashmap *map , void* key , vo
 Hashmap_traverse	src/lcthw/hashmap.c	/^int Hashmap_traverse(Hashmap *map , Hashmap_traverse_cb traverse_cb)$/;"	f
 Hashmap_traverse_cb	src/lcthw/hashmap.h	/^typedef int (*Hashmap_traverse_cb)(HashmapNode *node);$/;"	t
 INITIAL_STATIC_FIND_INDEX_COUNT	src/lcthw/bstrlib.c	1551;"	d	file:
-IN_STR	tests/string_algos.tests.c	/^struct tagbstring IN_STR = bsStatic("I have ALPHA beta ALPHA and oranges ALPHA");$/;"	v	typeref:struct:tagbstring
+IN_STR	tests/string_algos_tests.c	/^struct tagbstring IN_STR = bsStatic("I have ALPHA beta ALPHA and oranges ALPHA");$/;"	v	typeref:struct:tagbstring
 LDLIBS	Makefile	/^LDLIBS = -ldl $(OPTLIBS)$/;"	m
 LIST_FOREACH	src/lcthw/list.h	37;"	d
 LONG_BITS_QTY	src/lcthw/bstrlib.c	1274;"	d	file:
@@ -95,18 +95,28 @@ List_push	src/lcthw/list.c	/^void List_push(List *list , void *value){$/;"	f
 List_remove	src/lcthw/list.c	/^void * List_remove(List *list , ListNode *node){$/;"	f
 List_shift	src/lcthw/list.c	/^void *List_shift(List *list){$/;"	f
 List_unshift	src/lcthw/list.c	/^void List_unshift(List *list , void *value){$/;"	f
+MAX	src/lcthw/stack.h	13;"	d
 MOD_ADLER	src/lcthw/hashmap_algos.c	/^const int MOD_ADLER = 65521;$/;"	v
 MY_OWN	tests/hashmap_algos_tests.c	/^enum { ALGO_FNV1A , ALGO_ADLER32 , ALGO_DJB , MY_OWN};$/;"	e	enum:__anon1	file:
 NDEBUG	src/lcthw/hashmap.c	1;"	d	file:
 NDEBUG	tests/minunit.h	1;"	d
 NUM_KEYS	tests/hashmap_algos_tests.c	57;"	d	file:
+NUM_TESTS	tests/stack_tests.c	7;"	d	file:
 OBJECTS	Makefile	/^OBJECTS = $(patsubst %.c,%.o,$(SOURCES))$/;"	m
 PREFIX	Makefile	/^PREFIX ?= \/usr\/local$/;"	m
 RUN_TESTS	tests/minunit.h	15;"	d
 SOURCES	Makefile	/^SOURCES = $(wildcard src\/**\/*.c src\/*.c)$/;"	m
 SO_TARGET	Makefile	/^SO_TARGET = $(patsubst %.a, %.so , $(TARGET))$/;"	m
+STACK_FOREACH	src/lcthw/stack.h	25;"	d
 START_VSNBUFF	src/lcthw/bstrlib.c	2754;"	d	file:
 START_VSNBUFF	src/lcthw/bstrlib.c	2770;"	d	file:
+Stack	src/lcthw/stack.h	/^typedef void *Stack;$/;"	t
+Stack_count	src/lcthw/stack.h	17;"	d
+Stack_create	src/lcthw/stack.h	15;"	d
+Stack_destroy	src/lcthw/stack.h	19;"	d
+Stack_peek	src/lcthw/stack.h	23;"	d
+Stack_pop	src/lcthw/stack.h	22;"	d
+Stack_push	src/lcthw/stack.h	21;"	d
 StringScanner	src/lcthw/string_algos.h	/^typedef struct StringScanner {$/;"	s
 StringScanner	src/lcthw/string_algos.h	/^}StringScanner;$/;"	t	typeref:struct:StringScanner
 StringScanner_create	src/lcthw/string_algos.c	/^StringScanner *StringScanner_create(bstring in)$/;"	f
@@ -120,19 +130,23 @@ String_setup_skip_chars	src/lcthw/string_algos.c	/^static inline void String_set
 TARGET	Makefile	/^TARGET = build\/liblcthw.a$/;"	m
 TESTS	Makefile	/^TESTS = $(patsubst %.c,%,$(TEST_SRC))$/;"	m
 TEST_SRC	Makefile	/^TEST_SRC = $(wildcard tests\/*_tests.c)$/;"	m
-TEST_TIME	tests/string_algos.tests.c	/^const int TEST_TIME = 1;$/;"	v
+TEST_TIME	tests/string_algos_tests.c	/^const int TEST_TIME = 1;$/;"	v
 _CRT_SECURE_NO_WARNINGS	src/lcthw/bstrlib.c	15;"	d	file:
 _DArray_h	src/lcthw/darray.h	2;"	d
 __dbg_h__	src/lcthw/dbg.h	2;"	d
 _lcthw_Hashmap_h	src/lcthw/hashmap.h	2;"	d
 _minunit_h	tests/minunit.h	3;"	d
+_stack_h	src/lcthw/stack.h	2;"	d
 all_tests	tests/hashmap_algos_tests.c	/^RUN_TESTS(all_tests);$/;"	v
 all_tests	tests/hashmap_algos_tests.c	/^char *all_tests()$/;"	f
 all_tests	tests/hashmap_tests.c	/^RUN_TESTS(all_tests);$/;"	v
 all_tests	tests/hashmap_tests.c	/^char *all_tests()$/;"	f
 all_tests	tests/lists_tests.c	/^RUN_TESTS(all_tests);$/;"	v
 all_tests	tests/lists_tests.c	/^char *all_tests(){$/;"	f
-all_tests	tests/string_algos.tests.c	/^char *all_tests()$/;"	f
+all_tests	tests/stack_tests.c	/^RUN_TESTS(all_tests);$/;"	v
+all_tests	tests/stack_tests.c	/^char *all_tests(){$/;"	f
+all_tests	tests/string_algos_tests.c	/^RUN_TESTS(all_tests);$/;"	v
+all_tests	tests/string_algos_tests.c	/^char *all_tests()$/;"	f
 b	src/lcthw/bstrlib.c	/^	bstring b;$/;"	m	struct:genBstrList	file:
 bBlockCopy	src/lcthw/bstrlib.c	66;"	d	file:
 bNgetc	src/lcthw/bstrlib.h	/^typedef int (*bNgetc) (void *parm);$/;"	t
@@ -280,6 +294,9 @@ contents	src/lcthw/darray.h	/^	void **contents; \/\/ the array of pointers to it
 count	src/lcthw/list.h	/^	int count;$/;"	m	struct:List
 cstr2bstr	src/lcthw/bstrlib.h	40;"	d
 cstr2tbstr	src/lcthw/bstrlib.h	216;"	d
+cur	src/lcthw/stack.h	/^curstruct cur;$/;"	v
+curstruct	src/lcthw/stack.h	/^typedef struct curstruct {$/;"	s
+curstruct	src/lcthw/stack.h	/^} curstruct;$/;"	t	typeref:struct:curstruct
 darray_algos_h	src/lcthw/darray_algos.h	2;"	d
 data	src/lcthw/bstrlib.h	/^	unsigned char * data;$/;"	m	struct:tagbstring
 data	src/lcthw/hashmap.h	/^	void *data;$/;"	m	struct:HashmapNode
@@ -350,6 +367,8 @@ siftdown	src/lcthw/darray_algos.c	/^static void siftdown( void **contents , int 
 skip_chars	src/lcthw/string_algos.h	/^	size_t skip_chars[UCHAR_MAX+1];$/;"	m	struct:StringScanner
 slen	src/lcthw/bstrlib.h	/^	int slen;$/;"	m	struct:tagbstring
 snapUpSize	src/lcthw/bstrlib.c	/^static int snapUpSize (int i) {$/;"	f	file:
+sp	src/lcthw/stack.h	/^static int sp = -1;$/;"	v
+stack	tests/stack_tests.c	/^static Stack *stack = NULL;$/;"	v	file:
 string_algos_h	src/lcthw/string_algos.h	2;"	d
 swap	src/lcthw/darray_algos.c	/^static inline void swap( void **contents , int a , int b)$/;"	f	file:
 tagbstring	src/lcthw/bstrlib.h	/^struct tagbstring {$/;"	s
@@ -365,28 +384,33 @@ test3	tests/lists_tests.c	/^char *test3 = "test3 data";$/;"	v
 testInCharField	src/lcthw/bstrlib.c	1279;"	d	file:
 testInCharField	src/lcthw/bstrlib.c	1289;"	d	file:
 test_adler32	tests/hashmap_algos_tests.c	/^char *test_adler32()$/;"	f
-test_binstr_performance	tests/string_algos.tests.c	/^char *test_binstr_performance()$/;"	f
+test_binstr_performance	tests/string_algos_tests.c	/^char *test_binstr_performance()$/;"	f
 test_create	tests/hashmap_tests.c	/^char *test_create()$/;"	f
 test_create	tests/lists_tests.c	/^char *test_create(){$/;"	f
+test_create	tests/stack_tests.c	/^char *test_create()$/;"	f
 test_delete	tests/hashmap_tests.c	/^char *test_delete()$/;"	f
 test_destroy	tests/hashmap_tests.c	/^char *test_destroy()$/;"	f
 test_destroy	tests/lists_tests.c	/^char *test_destroy(){$/;"	f
+test_destroy	tests/stack_tests.c	/^char *test_destroy()$/;"	f
 test_distribution	tests/hashmap_algos_tests.c	/^char *test_distribution()$/;"	f
 test_djb	tests/hashmap_algos_tests.c	/^char *test_djb()$/;"	f
-test_find_and_scan	tests/string_algos.tests.c	/^char *test_find_and_scan()$/;"	f
-test_find_performance	tests/string_algos.tests.c	/^char *test_find_performance()$/;"	f
+test_find_and_scan	tests/string_algos_tests.c	/^char *test_find_and_scan()$/;"	f
+test_find_performance	tests/string_algos_tests.c	/^char *test_find_performance()$/;"	f
 test_fnv1a	tests/hashmap_algos_tests.c	/^char *test_fnv1a()$/;"	f
 test_get_set	tests/hashmap_tests.c	/^char *test_get_set()$/;"	f
 test_push_pop	tests/lists_tests.c	/^char *test_push_pop(){$/;"	f
+test_push_pop	tests/stack_tests.c	/^char *test_push_pop()$/;"	f
 test_remove	tests/lists_tests.c	/^char *test_remove(){$/;"	f
-test_scan_performance	tests/string_algos.tests.c	/^char *test_scan_performance()$/;"	f
+test_scan_performance	tests/string_algos_tests.c	/^char *test_scan_performance()$/;"	f
 test_shift	tests/lists_tests.c	/^char *test_shift(){$/;"	f
 test_traverse	tests/hashmap_tests.c	/^char *test_traverse()$/;"	f
 test_unshift	tests/lists_tests.c	/^char *test_unshift(){$/;"	f
+tests	tests/stack_tests.c	/^char *tests[] = {"test1 data" , "test2 data" , "test3 data"};$/;"	v
 tests_run	tests/minunit.h	/^int tests_run;$/;"	v
 traverse_called	tests/hashmap_tests.c	/^static int traverse_called = 0;$/;"	v	file:
 traverse_fail_cb	tests/hashmap_tests.c	/^static int traverse_fail_cb(HashmapNode *node)$/;"	f	file:
 traverse_good_cb	tests/hashmap_tests.c	/^static int traverse_good_cb(HashmapNode *node)$/;"	f	file:
 upcase	src/lcthw/bstrlib.c	558;"	d	file:
 value	src/lcthw/list.h	/^	void *value;$/;"	m	struct:ListNode
+value	src/lcthw/stack.h	/^	void *value;$/;"	m	struct:curstruct
 wspace	src/lcthw/bstrlib.c	560;"	d	file:

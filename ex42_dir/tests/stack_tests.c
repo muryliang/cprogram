@@ -1,8 +1,8 @@
-#include "minunit .h"
+#include "minunit.h"
 #include <lcthw/stack.h>
 #include <assert.h>
 
-static Static *static = NULL;
+static Stack *stack = NULL;
 char *tests[] = {"test1 data" , "test2 data" , "test3 data"};
 #define NUM_TESTS 3 
 
@@ -27,20 +27,21 @@ char *test_push_pop()
 	int i =0;
 	for(i = 0 ; i< NUM_TESTS ; i++){
 		Stack_push(stack , tests[i]);
-		mu_assert(Stack_peek(stack) == test[i] , "wrong next value");
+		mu_assert(Stack_peek(stack) == tests[i] , "wrong next value");
 	}
 
 	mu_assert(Stack_count(stack) == NUM_TESTS , "wrong count on push");
 	
 	STACK_FOREACH(stack , cur){
-		debug("VAL: $s" , (char *)cur->value);
+		debug("VAL: %s" , (char *)cur->value);
 	}
 
-	for( i = NUM_TESTS -1; i> 0 ; i--) {
+	for( i = NUM_TESTS -1; i>= 0 ; i--) {
 		char *val= Stack_pop(stack);
 		mu_assert(val == tests[i],  "wrong value on pop");
 	}
 
+	printf("the stackcount is %d\n" , Stack_count(stack));
 	mu_assert(Stack_count(stack) == 0 , "wrong count after pop");
 
 	return NULL;

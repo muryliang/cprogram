@@ -1,5 +1,6 @@
 #include <lcthw/string_algos.h>
 #include <limits.h>
+#include <sys/types.h>
 
 /*this function first fill table with the length of pattern
  * this is used when the last char in the compare is not
