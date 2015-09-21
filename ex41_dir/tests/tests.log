@@ -1,0 +1,18 @@
+DEBUG tests/BSTree_tests.c:166 ------RUNNING: ./tests/BSTree_tests
+DEBUG tests/BSTree_tests.c:157 
+------ test_create
+DEBUG tests/BSTree_tests.c:158 
+------ test_get_set
+DEBUG tests/BSTree_tests.c:159 
+------ test_traverse
+DEBUG tests/BSTree_tests.c:19 key :test data 3
+DEBUG tests/BSTree_tests.c:19 key :test data 2
+DEBUG tests/BSTree_tests.c:19 key :test data 1
+DEBUG tests/BSTree_tests.c:26 key: test data 3
+DEBUG tests/BSTree_tests.c:26 key: test data 2
+DEBUG tests/BSTree_tests.c:160 
+------ test_delete
+DEBUG tests/BSTree_tests.c:161 
+------ test_destroy
+DEBUG tests/BSTree_tests.c:162 
+------ test_fuzzing
