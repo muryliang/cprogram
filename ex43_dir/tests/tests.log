@@ -1,0 +1,5 @@
+DEBUG tests/stats_tests.c:72 ------RUNNING: ./tests/stats_tests
+DEBUG tests/stats_tests.c:66 
+------ test_operations
+sum: 55.845995 , sumsq :425.163858,n: 10, min 0.333348 ,max: 9.678320 , mean 5.584600 ,stddev : 3.547869DEBUG tests/stats_tests.c:67 
+------ test_recreate
