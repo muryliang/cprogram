@@ -1,0 +1,7 @@
+./src/lcthw/BSTree.c
+./src/lcthw/BSTree.h
+./src/lcthw/bstrlib.c
+./src/lcthw/bstrlib.h
+./src/lcthw/dbg.h
+./tests/BSTree_tests.c
+./tests/minunit.h
