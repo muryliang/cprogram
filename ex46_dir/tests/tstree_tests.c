@@ -9,6 +9,7 @@ char *valueA = "VALUEA";
 char *valueB = "VALUEB";
 char *value2 = "VALUE2";
 char *value4 = "VALUE4";
+char *reverse = "VALUER";
 int traverse_count = 0;
 
 struct tagbstring test1 = bsStatic("TEST");
@@ -24,7 +25,7 @@ char *test_insert()
 	node = TSTree_insert(node , bdata(&test2) ,blength(&test2) , value2);
 	mu_assert(node != NULL , "failed to insert sts with second name");
 
-	node = TSTree_insert(node , bdata(&test3) , blength(&test3) ,reserve);
+	node = TSTree_insert(node , bdata(&test3) , blength(&test3) ,reverse);
 	mu_assert(node != NULL , "failed to insert sts with reserve name");
 
 	node = TSTree_insert(node , bdata(&test4) , blength(&test4) ,value4);
@@ -53,14 +54,14 @@ char *test_search_prefix()
 	mu_assert(res == valueA , "got wrong valueA by prefix");
 	
 	res = TSTree_search_prefix(node , bdata(&test1) , 1 );
-	debug("result :%p,expected: %p" , res , value4);
-	mu_assert(res == value4 , "got wrong value4 , for prefix of 1 ");
+	debug("result :%p,expected: %p" , res , valueA);
+	mu_assert(res == valueA , "got wrong value4 , for prefix of 1 ");
 
 	res = TSTree_search_prefix(node , "TE" , strlen("TE"));
 	mu_assert(res != NULL , "should find for short prefix");
 	
 	res = TSTree_search_prefix(node , "TE--" , strlen("TE--"));
-	mu_assert(res != NULL , "should find for partial prefix");
+	mu_assert(res == NULL , "should not find for partial prefix");
 
 	return NULL;
 }
